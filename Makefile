@@ -14,10 +14,6 @@ OBJS = $(SRCS:$(SRC)/%.cpp=$(ODIR)/%.o)
 # Define executable output name
 EXEC = $(BIN)/GradeManager.exe
 
-# Compiile then run
-run: all
-	$(EXEC)
-
 # Default target
 all: $(BIN) $(ODIR) $(EXEC)
 
