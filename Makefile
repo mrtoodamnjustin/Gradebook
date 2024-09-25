@@ -19,11 +19,11 @@ all: $(BIN) $(ODIR) $(EXEC)
 
 # Create BIN directory if it doesn't exist
 $(BIN):
-	if not exist "$(BIN)" ( mkdir "$(BIN)" )
+	@if not exist "$(BIN)" ( mkdir "$(BIN)" )
 
 # Create ODIR directory if it doesn't exist
 $(ODIR):
-	if not exist "$(ODIR)" ( mkdir "$(ODIR)" )
+	@if not exist "$(ODIR)" ( mkdir "$(ODIR)" )
 
 # Rule to compile the executable
 $(EXEC): $(OBJS)
@@ -33,8 +33,13 @@ $(EXEC): $(OBJS)
 $(ODIR)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
+# Run target
+.PHONY: run
+run: all
+	$(EXEC)
+
 # Clean rule
 .PHONY: clean
 clean:
-	if exist "$(ODIR)" ( rmdir /S /Q "$(ODIR)" )
-	if exist "$(BIN)" ( rmdir /S /Q "$(BIN)" )
+	@if exist "$(ODIR)" ( rmdir /S /Q "$(ODIR)" )
+	@if exist "$(BIN)" ( rmdir /S /Q "$(BIN)" )
