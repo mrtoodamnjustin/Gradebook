@@ -2,32 +2,17 @@
 #include <string>
 #include <vector>
 
-#include "student.h"
+#include "course.h"
 
 class Gradebook {
  public:
   // Constructors
-  Gradebook(std::string courseTitle);
-  Gradebook(std::string courseTitle, std::vector<Student> students);
-  Gradebook(std::string courseTitle, std::vector<Student> students,
-            std::vector<std::string> assignments);
+  Gradebook(std::vector<Course>);
 
-  // Course Title
-  std::string getCourse();
-  void setCourseTitle(std::string courseTitle);
-
-  // Assignments
-  std::vector<std::string> getAssignments();
-  void createAssignment(std::string assignment);
-  void deleteAssignment(int position);
-
-  // Students
-  std::vector<Student> getStudents();
-  void addStudent(Student student);
-  void removeStudent(int position);
+  std::vector<Course> getCourses();
+  // TODO: finish implementation
 
  private:
-  std::string courseTitle;
-  std::vector<Student> students;
-  std::vector<std::string> assignments;
+  std::vector<Course> courses;
+  std::vector<Course> students;
 };
