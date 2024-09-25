@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "student.h"
@@ -15,6 +16,7 @@ class Course {
   std::string getName();
   std::vector<std::string> getAssignments();
   std::vector<int> getStudents();
+  int getCourseAverage();
 
   // Setters
   void setCRN(int courseCRN);
@@ -32,6 +34,10 @@ class Course {
   int CRN;
   std::string name;
   std::vector<int> students;
+
   // TODO: implement grades with a map?
   std::vector<std::string> assignments;
+
+  // First key is by assignment, second is UID
+  std::unordered_map<std::string, std::unordered_map<int, int>> grades;
 };

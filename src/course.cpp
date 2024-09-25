@@ -32,3 +32,21 @@ void Course::addStudent(int UID) { this->students.push_back(UID); }
 void Course::removeStudent(int position) {
   this->students.erase(this->students.begin() + position);
 }
+
+int Course::getCourseAverage() {
+  // iterate through each student, then iterate through grades using the
+  // studen'ts uid
+  int totalStudents = students.size();
+  int totalAssignments = assignments.size();
+  int courseAverage, gradeSum = 0;
+  for (int i = 0; i < totalStudents; i++) {
+    int sum = 0;
+    for (int j = 0; j < totalAssignments; j++) {
+      sum += grades[assignments[j]][students[i]];
+    }
+    gradeSum += (float)sum / totalAssignments;
+  }
+
+  courseAverage = gradeSum / totalStudents;
+  return courseAverage;
+}
