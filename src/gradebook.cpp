@@ -18,7 +18,7 @@ Gradebook::Gradebook(std::string courseTitle, std::vector<Student> students) {
 // Course Title
 std::string Gradebook::getCourse() { return this->courseTitle; }
 
-void Gradebook::setCourse(std::string courseTitle) {
+void Gradebook::setCourseTitle(std::string courseTitle) {
   this->courseTitle = courseTitle;
 }
 // Assignments

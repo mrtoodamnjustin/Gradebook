@@ -14,7 +14,7 @@ class Gradebook {
 
   // Course Title
   std::string getCourse();
-  void setCourse(std::string courseTitle);
+  void setCourseTitle(std::string courseTitle);
 
   // Assignments
   std::vector<std::string> getAssignments();
