@@ -12,13 +12,13 @@ class Course {
 
   // Getters
   int getCRN();
-  std::string getCourse();
+  std::string getName();
   std::vector<std::string> getAssignments();
   std::vector<int> getStudents();
 
   // Setters
   void setCRN(int courseCRN);
-  void setCourse(std::string courseTitle);
+  void setName(std::string courseName);
 
   // Assignments
   void createAssignment(std::string assignment);
@@ -30,7 +30,7 @@ class Course {
 
  private:
   int CRN;
-  std::string courseTitle;
+  std::string name;
   std::vector<int> students;
   // TODO: implement grades with a map?
   std::vector<std::string> assignments;

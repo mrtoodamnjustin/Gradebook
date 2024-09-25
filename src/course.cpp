@@ -1,9 +1,9 @@
 #include "course.h"
 
 // Constructors
-Course::Course(int courseCRN, std::string courseTitle) {
+Course::Course(int courseCRN, std::string courseName) {
   this->CRN = courseCRN;
-  this->courseTitle = courseTitle;
+  this->name = courseName;
 }
 
 // Course CRN
@@ -12,11 +12,9 @@ int Course::getCRN() { return this->CRN; }
 void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
 
 // Course Title
-std::string Course::getCourse() { return this->courseTitle; }
+std::string Course::getName() { return this->name; }
 
-void Course::setCourse(std::string courseTitle) {
-  this->courseTitle = courseTitle;
-}
+void Course::setName(std::string courseName) { this->name = courseName; }
 
 // Assignments
 std::vector<std::string> Course::getAssignments() { return this->assignments; }
