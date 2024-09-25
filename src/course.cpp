@@ -1,41 +1,22 @@
 #include "course.h"
 
-// Constructors
+// Constructor
 Course::Course(int courseCRN, std::string courseName) {
   this->CRN = courseCRN;
   this->name = courseName;
 }
 
-// Course CRN
 int Course::getCRN() { return this->CRN; }
 
-void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
-
-// Course Title
 std::string Course::getName() { return this->name; }
 
-void Course::setName(std::string courseName) { this->name = courseName; }
-
-// Assignments
 std::vector<std::string> Course::getAssignments() { return this->assignments; }
 
-void Course::createAssignment(std::string assignment) {
-  this->assignments.push_back(assignment);
-}
-void Course::deleteAssignment(int position) {}
-
-// Students
 std::vector<int> Course::getStudents() { return this->students; }
-
-void Course::addStudent(int UID) { this->students.push_back(UID); }
-
-void Course::removeStudent(int position) {
-  this->students.erase(this->students.begin() + position);
-}
 
 int Course::getCourseAverage() {
   // iterate through each student, then iterate through grades using the
-  // studen'ts uid
+  // student's uid
   int totalStudents = students.size();
   int totalAssignments = assignments.size();
   int courseAverage, gradeSum = 0;
@@ -49,4 +30,22 @@ int Course::getCourseAverage() {
 
   courseAverage = gradeSum / totalStudents;
   return courseAverage;
+}
+
+void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
+
+void Course::setName(std::string courseName) { this->name = courseName; }
+
+// Assignments
+void Course::createAssignment(std::string assignment) {
+  this->assignments.push_back(assignment);
+}
+
+void Course::deleteAssignment(int position) {}
+
+// Students
+void Course::addStudent(int UID) { this->students.push_back(UID); }
+
+void Course::removeStudent(int position) {
+  this->students.erase(this->students.begin() + position);
 }
