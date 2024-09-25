@@ -2,14 +2,25 @@
 
 // Constructors
 
-Gradebook::Gradebook(std::vector<Student> students,
+Gradebook::Gradebook(std::string courseTitle) {
+  this->courseTitle = courseTitle;
+}
+Gradebook::Gradebook(std::string courseTitle, std::vector<Student> students,
                      std::vector<std::string> assignments) {
+  this->courseTitle = courseTitle;
   this->students = students;
 }
-Gradebook::Gradebook(std::vector<Student> students) {
+Gradebook::Gradebook(std::string courseTitle, std::vector<Student> students) {
+  this->courseTitle = courseTitle;
   this->students = students;
 }
 
+// Course Title
+std::string Gradebook::getCourse() { return this->courseTitle; }
+
+void Gradebook::setCourse(std::string courseTitle) {
+  this->courseTitle = courseTitle;
+}
 // Assignments
 
 std::vector<std::string> Gradebook::getAssignments() {

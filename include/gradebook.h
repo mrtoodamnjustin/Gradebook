@@ -7,9 +7,14 @@
 class Gradebook {
  public:
   // Constructors
-  Gradebook(std::vector<Student> students,
+  Gradebook(std::string courseTitle);
+  Gradebook(std::string courseTitle, std::vector<Student> students);
+  Gradebook(std::string courseTitle, std::vector<Student> students,
             std::vector<std::string> assignments);
-  Gradebook(std::vector<Student> students);
+
+  // Course Title
+  std::string getCourse();
+  void setCourse(std::string courseTitle);
 
   // Assignments
   std::vector<std::string> getAssignments();
@@ -22,6 +27,7 @@ class Gradebook {
   void removeStudent(int position);
 
  private:
+  std::string courseTitle;
   std::vector<Student> students;
   std::vector<std::string> assignments;
 };
