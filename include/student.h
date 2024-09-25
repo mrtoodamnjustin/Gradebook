@@ -4,9 +4,9 @@
 
 class Student {
  public:
-  Student(std::string name, std::vector<float> grades);
+  Student(std::string name, int UID);
 
-  Student(std::string name);
+  Student(std::string name, int UID, std::vector<float> grades);
 
   std::string getName();
   void setName(std::string name);
@@ -21,6 +21,7 @@ class Student {
   float getGrade(int position);
 
  private:
+  int UID;
   std::string name;
   std::vector<float> grades;
 };

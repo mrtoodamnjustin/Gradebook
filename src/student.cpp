@@ -1,11 +1,15 @@
 #include "student.h"
 
-Student::Student(std::string name, std::vector<float> grades) {
+Student::Student(std::string name, int UID, std::vector<float> grades) {
+  this->UID = UID;
   this->name = name;
   this->grades = grades;
 }
 
-Student::Student(std::string name) { this->name = name; }
+Student::Student(std::string name, int UID) {
+  this->name = name;
+  this->UID = UID;
+}
 
 std::string Student::getName() { return this->name; }
 
