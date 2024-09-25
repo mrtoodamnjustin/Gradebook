@@ -1,19 +1,15 @@
 #include "course.h"
 
 // Constructors
-Course::Course(std::string courseTitle) { this->courseTitle = courseTitle; }
-
-Course::Course(std::string courseTitle, std::vector<Student> students) {
+Course::Course(int courseCRN, std::string courseTitle) {
+  this->CRN = courseCRN;
   this->courseTitle = courseTitle;
-  this->students = students;
 }
 
-Course::Course(std::string courseTitle, std::vector<Student> students,
-               std::vector<std::string> assignments) {
-  this->courseTitle = courseTitle;
-  this->students = students;
-  this->assignments = assignments;
-}
+// Course CRN
+int Course::getCRN() { return this->CRN; }
+
+void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
 
 // Course Title
 std::string Course::getCourse() { return this->courseTitle; }
@@ -31,9 +27,9 @@ void Course::createAssignment(std::string assignment) {
 void Course::deleteAssignment(int position) {}
 
 // Students
-std::vector<Student> Course::getStudents() { return this->students; }
+std::vector<int> Course::getStudents() { return this->students; }
 
-void Course::addStudent(Student student) { this->students.push_back(student); }
+void Course::addStudent(int UID) { this->students.push_back(UID); }
 
 void Course::removeStudent(int position) {
   this->students.erase(this->students.begin() + position);

@@ -8,10 +8,11 @@
 class Course {
  public:
   // Constructors
-  Course(std::string courseTitle);
-  Course(std::string courseTitle, std::vector<Student> students);
-  Course(std::string courseTitle, std::vector<Student> students,
-         std::vector<std::string> assignments);
+  Course(int courseCRN, std::string courseTitle);
+
+  // Course CRN
+  int getCRN();
+  void setCRN(int courseCRN);
 
   // Course Title
   std::string getCourse();
@@ -23,12 +24,14 @@ class Course {
   void deleteAssignment(int position);
 
   // Students
-  std::vector<Student> getStudents();
-  void addStudent(Student student);
+  std::vector<int> getStudents();
+  void addStudent(int UID);
   void removeStudent(int position);
 
  private:
+  int CRN;
   std::string courseTitle;
-  std::vector<Student> students;
+  std::vector<int> students;
+  // TODO: implement grades with a map?
   std::vector<std::string> assignments;
 };

@@ -1,36 +1,50 @@
 #include "student.h"
 
-Student::Student(std::string name, int UID, std::vector<float> grades) {
-  this->UID = UID;
-  this->name = name;
-  this->grades = grades;
-}
+#include <algorithm>
 
-Student::Student(std::string name, int UID) {
-  this->name = name;
+Student::Student(int UID, std::string name) {
   this->UID = UID;
+  this->name = name;
 }
 
 std::string Student::getName() { return this->name; }
 
 void Student::setName(std::string name) { this->name = name; }
 
-std::vector<float> Student::getGrades() { return this->grades; }
+int Student::getUID() { return this->UID; }
 
-void Student::setGrade(int position, float grade) {
-  this->grades.at(position) = grade;
+void Student::setUID(int UID) { this->UID = UID; }
+
+std::vector<int> Student::getCourses() { return this->courses; }
+
+void Student::addCourse(int courseCRN) {
+  if (std::find(this->courses.begin(), this->courses.end(), courseCRN) ==
+      this->courses.end())
+    this->courses.push_back(courseCRN);
 }
 
-// Make access safer using try/catch?
-float Student::getGrade(int position) { return this->grades.at(position); }
+void Student::removeCourse(int courseCRN) {
+  auto iterator =
+      std::find(this->courses.begin(), this->courses.end(), courseCRN);
+
+  // If the CRN isn't found, return
+  if (iterator == this->courses.end()) return;
+
+  // Otherwise, remove the student from the course
+  this->courses.erase(iterator);
+}
+
+// TODO:
+std::vector<float> Student::getGrades() {}
+
+float Student::getGrade(int courseCRN) {}
 
 float Student::getGPA() {
-  float sum = 0;
-  int size = this->grades.size();
-
-  for (int i = 0; i < size; i++) {
-    sum += grades.at(i);
+  int sum = 0;
+  int numberOfCourses = this->courses.size();
+  for (int i = 0; i < numberOfCourses; i++) {
+    sum += getGrade(this->courses[i]);
   }
 
-  return sum / size;
+  return sum / numberOfCourses;
 }

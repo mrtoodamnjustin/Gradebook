@@ -4,24 +4,29 @@
 
 class Student {
  public:
-  Student(std::string name, int UID);
-
-  Student(std::string name, int UID, std::vector<float> grades);
+  Student(int UID, std::string name);
 
   std::string getName();
   void setName(std::string name);
 
   float getGPA();
+
   std::vector<float> getGrades();
 
-  // Grade at index 'position' gets set to 'grade'
-  void setGrade(int position, float grade);
+  float getGrade(int courseCRN);
 
-  // Get grade at index 'position'
-  float getGrade(int position);
+  std::vector<int> getCourses();
+
+  void addCourse(int courseCRN);
+
+  void removeCourse(int courseCRN);
+
+  int getUID();
+
+  void setUID(int UID);
 
  private:
   int UID;
   std::string name;
-  std::vector<float> grades;
+  std::vector<int> courses;
 };
