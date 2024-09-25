@@ -7,24 +7,24 @@
 
 class Course {
  public:
-  // Constructors
+  // Constructor
   Course(int courseCRN, std::string courseTitle);
 
-  // Course CRN
+  // Getters
   int getCRN();
-  void setCRN(int courseCRN);
-
-  // Course Title
   std::string getCourse();
-  void setCourseTitle(std::string courseTitle);
+  std::vector<std::string> getAssignments();
+  std::vector<int> getStudents();
+
+  // Setters
+  void setCRN(int courseCRN);
+  void setCourse(std::string courseTitle);
 
   // Assignments
-  std::vector<std::string> getAssignments();
   void createAssignment(std::string assignment);
   void deleteAssignment(int position);
 
   // Students
-  std::vector<int> getStudents();
   void addStudent(int UID);
   void removeStudent(int position);
 

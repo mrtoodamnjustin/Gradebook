@@ -4,26 +4,24 @@
 
 class Student {
  public:
+  // Constructor
   Student(int UID, std::string name);
 
+  // Getters
+  int getUID();
   std::string getName();
-  void setName(std::string name);
-
+  std::vector<int> getCourses();
+  float getGrade(int courseCRN);
+  std::vector<float> getGrades();
   float getGPA();
 
-  std::vector<float> getGrades();
-
-  float getGrade(int courseCRN);
-
-  std::vector<int> getCourses();
-
-  void addCourse(int courseCRN);
-
-  void removeCourse(int courseCRN);
-
-  int getUID();
-
+  // Setters
   void setUID(int UID);
+  void setName(std::string name);
+
+  // Student's courses
+  void addCourse(int courseCRN);
+  void removeCourse(int courseCRN);
 
  private:
   int UID;

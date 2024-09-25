@@ -7,15 +7,29 @@ Student::Student(int UID, std::string name) {
   this->name = name;
 }
 
+int Student::getUID() { return this->UID; }
+
 std::string Student::getName() { return this->name; }
 
-void Student::setName(std::string name) { this->name = name; }
+std::vector<int> Student::getCourses() { return this->courses; }
 
-int Student::getUID() { return this->UID; }
+float Student::getGrade(int courseCRN) {}
+
+std::vector<float> Student::getGrades() {}
+
+float Student::getGPA() {
+  int sum = 0;
+  int numberOfCourses = this->courses.size();
+  for (int i = 0; i < numberOfCourses; i++) {
+    sum += getGrade(this->courses[i]);
+  }
+
+  return sum / numberOfCourses;
+}
 
 void Student::setUID(int UID) { this->UID = UID; }
 
-std::vector<int> Student::getCourses() { return this->courses; }
+void Student::setName(std::string name) { this->name = name; }
 
 void Student::addCourse(int courseCRN) {
   if (std::find(this->courses.begin(), this->courses.end(), courseCRN) ==
@@ -32,19 +46,4 @@ void Student::removeCourse(int courseCRN) {
 
   // Otherwise, remove the student from the course
   this->courses.erase(iterator);
-}
-
-// TODO:
-std::vector<float> Student::getGrades() {}
-
-float Student::getGrade(int courseCRN) {}
-
-float Student::getGPA() {
-  int sum = 0;
-  int numberOfCourses = this->courses.size();
-  for (int i = 0; i < numberOfCourses; i++) {
-    sum += getGrade(this->courses[i]);
-  }
-
-  return sum / numberOfCourses;
 }

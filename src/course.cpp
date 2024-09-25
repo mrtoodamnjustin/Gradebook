@@ -14,7 +14,7 @@ void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
 // Course Title
 std::string Course::getCourse() { return this->courseTitle; }
 
-void Course::setCourseTitle(std::string courseTitle) {
+void Course::setCourse(std::string courseTitle) {
   this->courseTitle = courseTitle;
 }
 
