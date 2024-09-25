@@ -1,26 +1,26 @@
 #include "student.h"
 
-student::student(std::string name, std::vector<float> grades) {
+Student::Student(std::string name, std::vector<float> grades) {
   this->name = name;
   this->grades = grades;
 }
 
-student::student(std::string name) { this->name = name; }
+Student::Student(std::string name) { this->name = name; }
 
-std::string student::getName() { return this->name; }
+std::string Student::getName() { return this->name; }
 
-void student::setName(std::string name) { this->name = name; }
+void Student::setName(std::string name) { this->name = name; }
 
-std::vector<float> student::getGrades() { return this->grades; }
+std::vector<float> Student::getGrades() { return this->grades; }
 
-void student::setGrade(int position, float grade) {
+void Student::setGrade(int position, float grade) {
   this->grades.at(position) = grade;
 }
 
 // Make access safer using try/catch?
-float student::getGrade(int position) { return this->grades.at(position); }
+float Student::getGrade(int position) { return this->grades.at(position); }
 
-float student::getGPA() {
+float Student::getGPA() {
   float sum = 0;
   int size = this->grades.size();
 

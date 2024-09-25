@@ -1,11 +1,12 @@
+#pragma once
 #include <string>
 #include <vector>
 
-class student {
+class Student {
  public:
-  student(std::string name, std::vector<float> grades);
+  Student(std::string name, std::vector<float> grades);
 
-  student(std::string name);
+  Student(std::string name);
 
   std::string getName();
   void setName(std::string name);
