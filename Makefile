@@ -12,7 +12,7 @@ SRCS = $(SRC)/student.cpp $(SRC)/gradebook.cpp $(SRC)/main.cpp $(SRC)/course.cpp
 OBJS = $(SRCS:$(SRC)/%.cpp=$(ODIR)/%.o)
 
 # Define executable output name
-EXEC = $(BIN)/GradeManager.exe
+EXEC = $(BIN)/Gradebook.exe
 
 # Default target
 all: $(BIN) $(ODIR) $(EXEC)
