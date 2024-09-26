@@ -4,7 +4,7 @@
 #include "gradebook.h"
 #include "student.h"
 
-enum Menu { MainMenu, StudentMenu, ClassMenu };
+enum Menu { MainMenu, Students, Classes, Student, Class };
 
 void flushCin() {
   std::cin.clear();
@@ -12,23 +12,50 @@ void flushCin() {
 }
 
 void printMenu(Menu menu) {
-  std::cout << "To perform an action, simply enter the number for the actions "
-               "provided below. Enter q to exit the program.\n";
+  std::cout << "===============================================\n";
+  std::cout << "      Welcome! Please select an option:\n";
+  std::cout << "===============================================\n";
+  std::cout << "To perform an action, enter the corresponding number.\n";
+  std::cout << "Type 'q' to exit the program.\n";
+  std::cout << "-----------------------------------------------\n";
   switch (menu) {
     case MainMenu:
-      std::cout << "[0]\tSee Classes\n";
-      std::cout << "[1]\tSee Students\n";
-      std::cout << "[2]\tSee about\n";
+      std::cout << "[0]   See Classes\n";
+      std::cout << "[1]   See Students\n";
+      std::cout << "[2]   See about\n";
       break;
 
-    case StudentMenu:
-      // TODO: print student related actions
+    case Students:
+      std::cout << "[0]   Add New Student\n";
+      std::cout << "[1]   View All Students\n";
+      std::cout << "[2]   Search Student by ID\n";
+      std::cout << "[3]   Back to Main Menu\n";
       break;
 
-    case ClassMenu:
-      // TODO: print class related actions
+    case Classes:
+      std::cout << "[0]   Add New Class\n";
+      std::cout << "[1]   View All Classes\n";
+      std::cout << "[2]   Search Class by ID\n";
+      std::cout << "[3]   Back to Main Menu\n";
       break;
+
+    case Student:
+      std::cout << "[0]   View Grades\n";
+      std::cout << "[1]   View Classes\n";
+      std::cout << "[2]   Return\n";
+      break;
+
+    case Class:
+      std::cout << "[0]   View Assignments\n";
+      std::cout << "[1]   View Class Grades\n";
+      std::cout << "[2]   View Students\n";
+      std::cout << "[3]   Return\n";
+
+    default:
+      std::cout << "Err:  Invalid Menu Accessed...\n ";
+      return 1;
   }
+  std::cout << "-----------------------------------------------\n";
 }
 
 int main() {
