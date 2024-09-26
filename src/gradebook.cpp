@@ -36,7 +36,33 @@ std::vector<Course> Gradebook::getCourses(int studentUID) {
 
   return studentsCourses;
 }
-std::vector<Student> Gradebook::getStudents(int courseCRN) {}
+
+std::vector<Student> Gradebook::getStudents(int courseCRN) {
+  std::vector<Student> studentsInCourse = {};
+  Course* course = nullptr;
+
+  for (int i = 0; i < this->courses.size(); i++) {
+    if (this->courses[i].getCRN() == courseCRN) {
+      course = &this->courses[i];
+      break;
+    }
+  }
+
+  if (course == nullptr) {
+    return {};
+  }
+
+  std::vector<int> studentUIDs = course->getStudents();
+
+  for (int i = 0; i < studentsInCourse.size(); i++) {
+    for (int j = 0; j < this->students.size(); j++) {
+      if (studentUIDs[i] == this->students[j].getUID())
+        studentsInCourse.push_back(this->students[j]);
+    }
+  }
+
+  return studentsInCourse;
+}
 
 int Gradebook::getGrade(int studentUID, int courseCRN) {}
 
