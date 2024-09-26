@@ -10,9 +10,22 @@ class Gradebook {
   Gradebook(std::vector<Course>);
 
   std::vector<Course> getCourses();
+  std::vector<Student> getStudents();
+
+  std::vector<Course> getCourses(int studentUID);
+  std::vector<Student> getStudents(int courseCRN);
+
+  int getGrade(int studentUID, int courseCRN);
+
+  // Returns vector of pair (class crn, grade)
+  std::vector<std::pair<int, int>> getStudentGrades(int studentUID);
+
+  std::vector<std::pair<int, int>> getCourseGrades(int courseCRN);
+
+  int getCourseAverageGrade(int courseCRN);
   // TODO: finish implementation
 
  private:
   std::vector<Course> courses;
-  std::vector<Course> students;
+  std::vector<Student> students;
 };
