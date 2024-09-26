@@ -90,7 +90,21 @@ float Gradebook::getGrade(int studentUID, int courseCRN) {
 }
 
 // Returns vector of pair (class crn, grade)
-std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {}
+std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
+  Student* student = this->getStudent(studentUID);
+  std::vector<std::pair<int, int>> grades = {};
+
+  if (student == nullptr) return {};
+
+  std::vector<int> studentsCourseCRNS = student->getCourses();
+  for (int i = 0; i < studentsCourseCRNS.size(); i++) {
+    grades.push_back({studentsCourseCRNS[i],
+                      this->getGrade(studentUID, studentsCourseCRNS[i])});
+  }
+}
+std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {}
+
+int Gradebook::getCourseAverageGrade(int courseCRN) {}
 
 Course Gradebook::createCourse(int courseCRN, std::string courseName) {
   Course course(courseCRN, courseName);
