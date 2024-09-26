@@ -13,7 +13,7 @@ std::vector<Course> Gradebook::getCourses(int studentUID) {
   Student* student = nullptr;
 
   // Find the student object, if it exists
-  for (int i = 0; i < this->students.size(); i++) {
+  for (size_t i = 0; i < this->students.size(); i++) {
     if (this->students[i].getUID() == studentUID) {
       student = &students[i];
       break;
@@ -25,8 +25,8 @@ std::vector<Course> Gradebook::getCourses(int studentUID) {
   std::vector<int> courseCRNs = student->getCourses();
 
   // Gather all the course objects
-  for (int i = 0; i < courseCRNs.size(); i++) {
-    for (int j = 0; j < this->courses.size(); j++) {
+  for (size_t i = 0; i < courseCRNs.size(); i++) {
+    for (size_t j = 0; j < this->courses.size(); j++) {
       if (this->courses[j].getCRN() == courseCRNs[i]) {
         studentsCourses.push_back(this->courses[j]);
         break;
@@ -41,7 +41,7 @@ std::vector<Student> Gradebook::getStudents(int courseCRN) {
   std::vector<Student> studentsInCourse = {};
   Course* course = nullptr;
 
-  for (int i = 0; i < this->courses.size(); i++) {
+  for (size_t i = 0; i < this->courses.size(); i++) {
     if (this->courses[i].getCRN() == courseCRN) {
       course = &this->courses[i];
       break;
@@ -54,8 +54,8 @@ std::vector<Student> Gradebook::getStudents(int courseCRN) {
 
   std::vector<int> studentUIDs = course->getStudents();
 
-  for (int i = 0; i < studentsInCourse.size(); i++) {
-    for (int j = 0; j < this->students.size(); j++) {
+  for (size_t i = 0; i < studentsInCourse.size(); i++) {
+    for (size_t j = 0; j < this->students.size(); j++) {
       if (studentUIDs[i] == this->students[j].getUID())
         studentsInCourse.push_back(this->students[j]);
     }
@@ -67,7 +67,7 @@ std::vector<Student> Gradebook::getStudents(int courseCRN) {
 float Gradebook::getGrade(int studentUID, int courseCRN) {
   Course* course = nullptr;
 
-  for (int i = 0; i < this->courses.size(); i++) {
+  for (size_t i = 0; i < this->courses.size(); i++) {
     if (this->courses[i].getCRN() == courseCRN) course = &this->courses[i];
     break;
   }
@@ -97,7 +97,7 @@ std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
   if (student == nullptr) return {};
 
   std::vector<int> studentsCourseCRNS = student->getCourses();
-  for (int i = 0; i < studentsCourseCRNS.size(); i++) {
+  for (size_t i = 0; i < studentsCourseCRNS.size(); i++) {
     grades.push_back({studentsCourseCRNS[i],
                       this->getGrade(studentUID, studentsCourseCRNS[i])});
   }
@@ -120,7 +120,7 @@ Student Gradebook::createStudent(int studentUID, std::string studentName) {
 Student* Gradebook::getStudent(int studentUID) {
   Student* student = nullptr;
 
-  for (int i = 0; i < this->students.size(); i++) {
+  for (size_t i = 0; i < this->students.size(); i++) {
     if (students[i].getUID() == studentUID) {
       student = &students[i];
       break;
@@ -133,7 +133,7 @@ Student* Gradebook::getStudent(int studentUID) {
 Course* Gradebook::getCourse(int courseCRN) {
   Course* course = nullptr;
 
-  for (int i = 0; i < this->courses.size(); i++) {
+  for (size_t i = 0; i < this->courses.size(); i++) {
     if (courses[i].getCRN() == courseCRN) {
       course = &courses[i];
       break;
