@@ -28,7 +28,11 @@ void Course::setName(std::string courseName) { this->name = courseName; }
 
 // Assignments
 void Course::createAssignment(std::string assignment) {
-  this->assignments[assignment] = {};
+  std::unordered_map<int, int> grades;
+  for (int i = 0; i < this->students.size(); i++) {
+    grades[students[i]] = Ungraded;
+  }
+  this->assignments[assignment] = grades;
 }
 
 void Course::deleteAssignment(std::string assignment) {
