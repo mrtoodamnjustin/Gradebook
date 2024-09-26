@@ -13,20 +13,6 @@ std::string Student::getName() { return this->name; }
 
 std::vector<int> Student::getCourses() { return this->courses; }
 
-float Student::getGrade(int courseCRN) {}
-
-std::vector<float> Student::getGrades() {}
-
-float Student::getGPA() {
-  int sum = 0;
-  int numberOfCourses = this->courses.size();
-  for (int i = 0; i < numberOfCourses; i++) {
-    sum += getGrade(this->courses[i]);
-  }
-
-  return sum / numberOfCourses;
-}
-
 void Student::setUID(int UID) { this->UID = UID; }
 
 void Student::setName(std::string name) { this->name = name; }

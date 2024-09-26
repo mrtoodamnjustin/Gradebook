@@ -11,9 +11,6 @@ class Student {
   int getUID();
   std::string getName();
   std::vector<int> getCourses();
-  float getGrade(int courseCRN);
-  std::vector<float> getGrades();
-  float getGPA();
 
   // Setters
   void setUID(int UID);
