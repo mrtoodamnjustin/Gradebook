@@ -1,5 +1,10 @@
 #include "course.h"
 
+enum gradeFlags {
+  Ungraded = -1,
+  Missing = -2,
+};
+
 // Constructor
 Course::Course(int courseCRN, std::string courseName) {
   this->CRN = courseCRN;
