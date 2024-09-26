@@ -101,6 +101,8 @@ std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
     grades.push_back({studentsCourseCRNS[i],
                       this->getGrade(studentUID, studentsCourseCRNS[i])});
   }
+
+  return grades;
 }
 
 std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {
@@ -115,6 +117,8 @@ std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {
     float grade = getGrade(students[i], courseCRN);
     if (grade != -1) grades.push_back({students[i], grade});
   }
+
+  return grades;
 }
 
 int Gradebook::getCourseAverageGrade(int courseCRN) {
