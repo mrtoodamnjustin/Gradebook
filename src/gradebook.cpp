@@ -104,7 +104,18 @@ std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
 }
 std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {}
 
-int Gradebook::getCourseAverageGrade(int courseCRN) {}
+int Gradebook::getCourseAverageGrade(int courseCRN) {
+  int sum = 0;
+  Course* course = this->getCourse(courseCRN);
+
+  std::vector<int> students = course->getStudents();
+  for (size_t i = 0; i < students.size(); i++) {
+    sum += (float)getGrade(students[i], courseCRN) /
+           course->getAssignments().size();
+  }
+
+  return sum / students.size();
+}
 
 Course Gradebook::createCourse(int courseCRN, std::string courseName) {
   Course course(courseCRN, courseName);
