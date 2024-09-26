@@ -14,7 +14,8 @@ class Course {
   // Getters
   int getCRN();
   std::string getName();
-  std::vector<std::string> getAssignments();
+  std::unordered_map<std::string, std::unordered_map<int, int>>
+  getAssignments();
   std::vector<int> getStudents();
   int getCourseAverage();
 
@@ -24,7 +25,7 @@ class Course {
 
   // Assignments
   void createAssignment(std::string assignment);
-  void deleteAssignment(int position);
+  void deleteAssignment(std::string assignment);
 
   // Students
   void addStudent(int UID);
@@ -35,9 +36,6 @@ class Course {
   std::string name;
   std::vector<int> students;
 
-  // TODO: implement grades with a map?
-  std::vector<std::string> assignments;
-
-  // First key is by assignment, second is UID
-  std::unordered_map<std::string, std::unordered_map<int, int>> grades;
+  // First key is by assignment, second is UID, result is grade
+  std::unordered_map<std::string, std::unordered_map<int, int>> assignments;
 };
