@@ -53,7 +53,6 @@ void printMenu(Menu menu) {
 
     default:
       std::cout << "Err:  Invalid Menu Accessed...\n ";
-      return 1;
   }
   std::cout << "-----------------------------------------------\n";
 }
