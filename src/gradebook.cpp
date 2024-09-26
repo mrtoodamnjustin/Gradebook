@@ -101,3 +101,30 @@ Student Gradebook::createStudent(int studentUID, std::string studentName) {
   Student student(studentUID, studentName);
   this->students.push_back(student);
 }
+
+// PRIVATE
+Student* Gradebook::getStudent(int studentUID) {
+  Student* student = nullptr;
+
+  for (int i = 0; i < this->students.size(); i++) {
+    if (students[i].getUID() == studentUID) {
+      student = &students[i];
+      break;
+    }
+  }
+
+  return student;
+}
+
+Course* Gradebook::getCourse(int courseCRN) {
+  Course* course = nullptr;
+
+  for (int i = 0; i < this->courses.size(); i++) {
+    if (courses[i].getCRN() == courseCRN) {
+      course = &courses[i];
+      break;
+    }
+  }
+
+  return course;
+}

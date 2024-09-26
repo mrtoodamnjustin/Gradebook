@@ -30,6 +30,9 @@ class Gradebook {
   // TODO: finish implementation
 
  private:
+  Student* getStudent(int studentUID);
+  Course* getCourse(int courseCRN);
+
   std::vector<Course> courses;
   std::vector<Student> students;
 };
