@@ -136,12 +136,12 @@ int Gradebook::getCourseAverageGrade(int courseCRN) {
   return sum / students.size();
 }
 
-Course Gradebook::createCourse(int courseCRN, std::string courseName) {
+void Gradebook::createCourse(int courseCRN, std::string courseName) {
   Course course(courseCRN, courseName);
   this->courses.push_back(course);
 }
 
-Student Gradebook::createStudent(int studentUID, std::string studentName) {
+void Gradebook::createStudent(int studentUID, std::string studentName) {
   Student student(studentUID, studentName);
   this->students.push_back(student);
 }

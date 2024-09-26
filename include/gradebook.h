@@ -24,9 +24,9 @@ class Gradebook {
 
   int getCourseAverageGrade(int courseCRN);
 
-  Course createCourse(int courseCRN, std::string courseName);
+  void createCourse(int courseCRN, std::string courseName);
 
-  Student createStudent(int studentUID, std::string studentName);
+  void createStudent(int studentUID, std::string studentName);
   // TODO: finish implementation
 
  private:
