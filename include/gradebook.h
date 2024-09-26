@@ -23,6 +23,10 @@ class Gradebook {
   std::vector<std::pair<int, int>> getCourseGrades(int courseCRN);
 
   int getCourseAverageGrade(int courseCRN);
+
+  Course createCourse(int courseCRN, std::string courseName);
+
+  Student createStudent(int studentUID, std::string studentName);
   // TODO: finish implementation
 
  private:

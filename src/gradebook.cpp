@@ -91,3 +91,13 @@ float Gradebook::getGrade(int studentUID, int courseCRN) {
 
 // Returns vector of pair (class crn, grade)
 std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {}
+
+Course Gradebook::createCourse(int courseCRN, std::string courseName) {
+  Course course(courseCRN, courseName);
+  this->courses.push_back(course);
+}
+
+Student Gradebook::createStudent(int studentUID, std::string studentName) {
+  Student student(studentUID, studentName);
+  this->students.push_back(student);
+}
