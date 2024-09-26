@@ -8,9 +8,9 @@ This project was created entirely by me in order to practice object oriented pro
 
 ## Building
 
-If you have make, you can simply run the make command. This requires an installation of g++ that has it put into path.
+If you have make installed, you can simply run the make command. This requires an installation of g++ that has it put into path.
 
-> This makefile was created with the intention to be ran on windows. If you are building on a UNIX operating system, some refactoring will be necessary.
+> This makefile was created with the intention to be used on Windows. If you are building on a UNIX operating system, some refactoring will be necessary.
 
 ```
 make
