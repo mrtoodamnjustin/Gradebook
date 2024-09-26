@@ -1,18 +1,18 @@
 # Define compiler and flags
-CXX = g++
-CPPFLAGS = -I include -Wall
+CXX := g++
+CPPFLAGS := -I include -Wall
 
 # Define directories
-SRC = ./src
-BIN = ./build
-ODIR = ./build/obj
+SRC := ./src
+BIN := ./build
+ODIR := ./build/obj
 
 # Define file names
-SRCS = $(SRC)/student.cpp $(SRC)/gradebook.cpp $(SRC)/main.cpp $(SRC)/course.cpp
-OBJS = $(SRCS:$(SRC)/%.cpp=$(ODIR)/%.o)
+SRCS := $(SRC)/student.cpp $(SRC)/gradebook.cpp $(SRC)/main.cpp $(SRC)/course.cpp
+OBJS := $(SRCS:$(SRC)/%.cpp=$(ODIR)/%.o)
 
 # Define executable output name
-EXEC = $(BIN)/Gradebook.exe
+EXEC := $(BIN)/Gradebook.exe
 
 # Default target
 all: $(BIN) $(ODIR) $(EXEC)
