@@ -64,7 +64,30 @@ std::vector<Student> Gradebook::getStudents(int courseCRN) {
   return studentsInCourse;
 }
 
-int Gradebook::getGrade(int studentUID, int courseCRN) {}
+float Gradebook::getGrade(int studentUID, int courseCRN) {
+  Course* course = nullptr;
+
+  for (int i = 0; i < this->courses.size(); i++) {
+    if (this->courses[i].getCRN() == courseCRN) course = &this->courses[i];
+    break;
+  }
+
+  if (course == nullptr) return -1;
+
+  float sum = 0, totalGrades = 0;
+  auto assignments = course->getAssignments();
+  for (auto i = assignments.begin(); i != assignments.end(); i++) {
+    auto& studentGrades = i->second;
+    auto studentIt = studentGrades.find(studentUID);
+
+    if (studentIt != studentGrades.end()) {
+      totalGrades++;
+      sum += studentIt->second;
+    }
+  }
+
+  return sum / totalGrades;
+}
 
 // Returns vector of pair (class crn, grade)
 std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {}
