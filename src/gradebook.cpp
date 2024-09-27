@@ -141,6 +141,22 @@ int Gradebook::getCourseAverageGrade(int courseCRN) {
   return sum / students.size();
 }
 
+float Gradebook::getGPA(int studentUID) {
+  Student* student = this->getStudent(studentUID);
+
+  if (student == nullptr) return -1;
+
+  float sum = 0;
+  std::vector<int> studentsCourses = student->getCourses();
+  size_t numOfCourses = studentsCourses.size();
+
+  for (size_t i = 0; i < numOfCourses; i++) {
+    sum += this->getGrade(studentUID, studentsCourses[i]);
+  }
+
+  return sum / numOfCourses;
+}
+
 void Gradebook::createCourse(int courseCRN, std::string courseName) {
   Course course(courseCRN, courseName);
   this->courses.push_back(course);

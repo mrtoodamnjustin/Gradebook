@@ -26,6 +26,8 @@ class Gradebook {
 
   int getCourseAverageGrade(int courseCRN);
 
+  float getGPA(int studentUID);
+
   void createCourse(int courseCRN, std::string courseName);
 
   void createStudent(int studentUID, std::string studentName);
