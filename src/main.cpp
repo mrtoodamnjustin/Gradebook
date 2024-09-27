@@ -19,7 +19,11 @@ void printEntities(std::vector<std::pair<int, std::string>>& entitites,
 
 void printAbout() {}
 
-void printBadInput() {}
+void printBadInput() {
+  std::cout << "\n";
+  std::cout << "Invalid input. Please enter a valid option from the menu.\n";
+  std::cout << "\n";
+}
 
 int main() {
   Gradebook gradebook;
