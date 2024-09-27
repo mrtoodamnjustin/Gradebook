@@ -2,69 +2,11 @@
 
 #include "gradebook.h"
 
-enum Menu {
-  MainMenu,
-  AllStudentsMenu,
-  AllClassesMenu,
-  StudentMenu,
-  ClassMenu,
-  AboutMenu,
-  BadInput
-};
+enum Menu { MainMenu, AllStudentsMenu, AllClassesMenu, StudentMenu, ClassMenu };
 
 void flushCin() {
   std::cin.clear();
   std::cin.ignore(256, '\n');
-}
-
-void printMenu(Menu menu) {
-  std::cout << "===============================================\n";
-  std::cout << "      Welcome! Please select an option:\n";
-  std::cout << "===============================================\n";
-  std::cout << "To perform an action, enter the corresponding number.\n";
-  std::cout << "Type 'q' to exit the program.\n";
-  std::cout << "-----------------------------------------------\n";
-  switch (menu) {
-    case MainMenu:
-      std::cout << "[1]   See Classes\n";
-      std::cout << "[2]   See Students\n";
-      std::cout << "[3]   See About\n";
-      break;
-
-    case AllStudentsMenu:
-      std::cout << "[1]   Add New Student\n";
-      std::cout << "[2]   Search Student by ID\n";
-      std::cout << "[3]   Back to Main Menu\n";
-      break;
-
-    case AllClassesMenu:
-      std::cout << "[1]   Add New Class\n";
-      std::cout << "[2]   Search Class by ID\n";
-      std::cout << "[3]   Back to Main Menu\n";
-      break;
-
-    case StudentMenu:
-      std::cout << "[1]   View Grades\n";
-      std::cout << "[2]   View Classes\n";
-      std::cout << "[3]   Return\n";
-      break;
-
-    case ClassMenu:
-      std::cout << "[1]   View Assignments\n";
-      std::cout << "[2]   View Students\n";
-      std::cout << "[3]   Return\n";
-      break;
-
-    case AboutMenu:
-      break;
-
-    case BadInput:
-      break;
-
-    default:
-      std::cout << "Err:  Invalid Menu Accessed...\n ";
-  }
-  std::cout << "-----------------------------------------------\n";
 }
 
 void printStudents(std::vector<std::pair<int, std::string>>& entitites) {
@@ -81,6 +23,10 @@ void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
   }
 }
 
+void printAbout() {}
+
+void printBadInput() {}
+
 int main() {
   Gradebook gradebook;
   std::cout << "Welcome to Consumer Softproducts interactive C++ gradebook!\n";
@@ -88,7 +34,47 @@ int main() {
   int currentID;
   while (true) {
     std::cout << "\n";
-    printMenu(currentMenu);
+    std::cout << "===============================================\n";
+    std::cout << "      Welcome! Please select an option:\n";
+    std::cout << "===============================================\n";
+    std::cout << "To perform an action, enter the corresponding number.\n";
+    std::cout << "Type 'q' to exit the program.\n";
+    std::cout << "-----------------------------------------------\n";
+    switch (currentMenu) {
+      case MainMenu:
+        std::cout << "[1]   See Classes\n";
+        std::cout << "[2]   See Students\n";
+        std::cout << "[3]   See About\n";
+        break;
+
+      case AllStudentsMenu:
+        std::cout << "[1]   Add New Student\n";
+        std::cout << "[2]   Search Student by ID\n";
+        std::cout << "[3]   Back to Main Menu\n";
+        break;
+
+      case AllClassesMenu:
+        std::cout << "[1]   Add New Class\n";
+        std::cout << "[2]   Search Class by ID\n";
+        std::cout << "[3]   Back to Main Menu\n";
+        break;
+
+      case StudentMenu:
+        std::cout << "[1]   View Grades\n";
+        std::cout << "[2]   View Classes\n";
+        std::cout << "[3]   Return\n";
+        break;
+
+      case ClassMenu:
+        std::cout << "[1]   View Assignments\n";
+        std::cout << "[2]   View Students\n";
+        std::cout << "[3]   Return\n";
+        break;
+
+      default:
+        std::cout << "Err:  Invalid Menu Accessed...\n ";
+    }
+    std::cout << "-----------------------------------------------\n";
 
     std::string input;
     std::cin >> input;
@@ -117,11 +103,11 @@ int main() {
 
           // See About
           case '3':
-            printMenu(AboutMenu);
+            printAbout();
             break;
 
           default:
-            printMenu(BadInput);
+            printBadInput();
             break;
         }
         break;
@@ -158,7 +144,7 @@ int main() {
             break;
 
           default:
-            printMenu(BadInput);
+            printBadInput();
             break;
         }
         break;
@@ -194,7 +180,7 @@ int main() {
             break;
 
           default:
-            printMenu(BadInput);
+            printBadInput();
             break;
         }
         break;
@@ -217,11 +203,11 @@ int main() {
             break;
 
           default:
-            printMenu(BadInput);
+            printBadInput();
             break;
         }
         break;
-
+      }
       // TODO: implement
       case ClassMenu:
         switch (input.at(0)) {
@@ -238,7 +224,7 @@ int main() {
             break;
 
           default:
-            printMenu(BadInput);
+            printBadInput();
             break;
         }
         break;
