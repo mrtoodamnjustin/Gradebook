@@ -10,16 +10,17 @@ void flushCin() {
 }
 
 void printStudents(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Student Name\t\tUID\n";
+  std::cout << "Student Name\t\tUID\n\n";
   for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << " \t\t(" << entitites[i].first << ")\n";
+    std::cout << entitites[i].second << " \t\t\t" << entitites[i].first
+              << "\n ";
   }
 }
 
 void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Course Title\t\tCRN\n";
+  std::cout << "Course Title\t\tCRN\n\n";
   for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << "\t\t(" << entitites[i].first << ")\n";
+    std::cout << entitites[i].second << "\t\t\t" << entitites[i].first << "\n";
   }
 }
 
@@ -29,14 +30,16 @@ void printBadInput() {}
 
 int main() {
   Gradebook gradebook;
-  std::cout << "Welcome to Consumer Softproducts interactive C++ gradebook!\n";
+  std::cout
+      << "==================================================================\n";
+  std::cout
+      << "  Welcome to my interactive gradebook! Please select an option:\n";
+  std::cout
+      << "==================================================================\n";
   Menu currentMenu = MainMenu;
   int currentID;
   while (true) {
     std::cout << "\n";
-    std::cout << "===============================================\n";
-    std::cout << "      Welcome! Please select an option:\n";
-    std::cout << "===============================================\n";
     std::cout << "To perform an action, enter the corresponding number.\n";
     std::cout << "Type 'q' to exit the program.\n";
     std::cout << "-----------------------------------------------\n";
@@ -47,17 +50,27 @@ int main() {
         std::cout << "[3]   See About\n";
         break;
 
-      case AllStudentsMenu:
+      case AllStudentsMenu: {
+        auto students = gradebook.getStudents();
+        printStudents(students);
+        if (students.empty()) std::cout << "No results.\n";
+        std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Student\n";
         std::cout << "[2]   Search Student by ID\n";
         std::cout << "[3]   Back to Main Menu\n";
         break;
+      }
 
-      case AllClassesMenu:
+      case AllClassesMenu: {
+        auto courses = gradebook.getCourses();
+        printClasses(courses);
+        if (courses.empty()) std::cout << "No results.\n";
+        std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Class\n";
         std::cout << "[2]   Search Class by ID\n";
         std::cout << "[3]   Back to Main Menu\n";
         break;
+      }
 
       case StudentMenu: {
         auto studentGrades = gradebook.getStudentGrades(currentID);
@@ -109,16 +122,12 @@ int main() {
         switch (input.at(0)) {
           // See Classes
           case '1': {
-            auto courses = gradebook.getCourses();
-            printClasses(courses);
             currentMenu = AllClassesMenu;
             break;
           }
 
           // See Students
           case '2': {
-            auto students = gradebook.getStudents();
-            printStudents(students);
             currentMenu = AllStudentsMenu;
             break;
           }
