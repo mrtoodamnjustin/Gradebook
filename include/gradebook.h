@@ -7,9 +7,6 @@
 
 class Gradebook {
  public:
-  // Constructors
-  Gradebook(std::vector<Course>);
-
   std::vector<std::pair<int, std::string>> getCourses();
   std::vector<std::pair<int, std::string>> getStudents();
 

@@ -2,8 +2,6 @@
 
 #include <algorithm>
 
-Gradebook::Gradebook(std::vector<Course> courses) { this->courses = courses; }
-
 std::vector<std::pair<int, std::string>> Gradebook::getCourses() {
   std::vector<std::pair<int, std::string>> coursesInfo;
   for (size_t i = 0; i < this->courses.size(); i++) {
