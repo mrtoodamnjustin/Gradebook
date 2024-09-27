@@ -27,7 +27,7 @@ class Course {
 
   // Students
   void addStudent(int studentUID);
-  void removeStudent(int position);
+  void removeStudent(int studentUID);
 
  private:
   int CRN;

@@ -44,6 +44,11 @@ void Course::addStudent(int studentUID) {
   this->students.push_back(studentUID);
 }
 
-void Course::removeStudent(int position) {
-  this->students.erase(this->students.begin() + position);
+void Course::removeStudent(int studentUID) {
+  auto it = std::find(this->students.begin(), this->students.end(), studentUID);
+
+  // If the student is already not in the class, return
+  if (it == this->students.end()) return;
+
+  this->students.erase(it);
 }
