@@ -86,14 +86,14 @@ int main() {
 
       case ClassMenu: {
         auto studentGrades = gradebook.getCourseGrades(currentID);
-        std::cout << "Classes\t\tGrades";
-        for (size_t i = 0; i < studentGrades.size(); i++) {
-          std::cout << gradebook.getCourseName(studentGrades[i].first) << "\t\t"
-                    << gradebook.getGrade(currentID, studentGrades[i].first)
-                    << "\n";
-        }
+        std::cout << gradebook.getCourseName(currentID) << " (" << currentID
+                  << ")\n\n";
+
+        int courseAverage = gradebook.getCourseAverageGrade(currentID);
         std::cout << "Course Average: "
-                  << gradebook.getCourseAverageGrade(currentID);
+                  << ((courseAverage != -1) ? std::to_string(courseAverage)
+                                            : "nil")
+                  << "\n";
 
         std::cout << "[1]   View Assignments\n";
         std::cout << "[2]   View Students\n";
