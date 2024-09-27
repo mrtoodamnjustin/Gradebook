@@ -69,9 +69,10 @@ int main() {
         }
         std::cout << "Student GPA: " << gradebook.getGPA(currentID);
 
-        std::cout << "[1]   View Grades\n";
-        std::cout << "[2]   View Classes\n";
-        std::cout << "[3]   Return\n";
+        std::cout << "[1]   Add Class\n";
+        std::cout << "[2]   Drop Class\n";
+        std::cout << "[3]   View Class' Assignments\n";
+        std::cout << "[4]   Return\n";
         break;
       }
 
@@ -210,16 +211,20 @@ int main() {
       // TODO: implement
       case StudentMenu:
         switch (input.at(0)) {
-          // View Grades
+          // Add Class
           case '1':
             break;
 
-          // View Classes
+          // Drop Class
           case '2':
             break;
 
-          // Return
+          // View Class' Assignments
           case '3':
+            break;
+
+          // Return
+          case '4':
             break;
 
           default:
