@@ -10,8 +10,8 @@ class Gradebook {
   std::vector<std::pair<int, std::string>> getCourses();
   std::vector<std::pair<int, std::string>> getStudents();
 
-  std::vector<std::pair<int, std::string>> getCourses(int studentUID);
-  std::vector<std::pair<int, std::string>> getStudents(int courseCRN);
+  std::vector<std::pair<int, std::string>> getCourses(int courseCRN);
+  std::vector<std::pair<int, std::string>> getStudents(int studentUID);
 
   float getGrade(int studentUID, int courseCRN);
 
