@@ -55,6 +55,12 @@ void printMenu(Menu menu) {
   std::cout << "-----------------------------------------------\n";
 }
 
+void printNameAndIDs(std::vector<std::pair<int, std::string>>& entitites) {
+  for (size_t i = 0; i < entitites.size(); i++) {
+    std::cout << entitites[i].second << " (" << entitites[i].first << ")";
+  }
+}
+
 int main() {
   std::cout << "Welcome to Consumer Softproducts interactive C++ gradebook!\n";
   Menu currentMenu = MainMenu;
