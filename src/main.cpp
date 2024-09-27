@@ -10,14 +10,14 @@ void flushCin() {
 }
 
 void printStudents(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Student Name:\t\tUID:\n";
+  std::cout << "Student Name\t\tUID\n";
   for (size_t i = 0; i < entitites.size(); i++) {
     std::cout << entitites[i].second << " \t\t(" << entitites[i].first << ")\n";
   }
 }
 
 void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Course Title:\t\tCRN:\n";
+  std::cout << "Course Title\t\tCRN\n";
   for (size_t i = 0; i < entitites.size(); i++) {
     std::cout << entitites[i].second << "\t\t(" << entitites[i].first << ")\n";
   }
