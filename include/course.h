@@ -26,7 +26,7 @@ class Course {
   void deleteAssignment(std::string assignment);
 
   // Students
-  void addStudent(int UID);
+  void addStudent(int studentUID);
   void removeStudent(int position);
 
  private:

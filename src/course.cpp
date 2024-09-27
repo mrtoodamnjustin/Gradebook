@@ -40,7 +40,9 @@ void Course::deleteAssignment(std::string assignment) {
 }
 
 // Students
-void Course::addStudent(int UID) { this->students.push_back(UID); }
+void Course::addStudent(int studentUID) {
+  this->students.push_back(studentUID);
+}
 
 void Course::removeStudent(int position) {
   this->students.erase(this->students.begin() + position);

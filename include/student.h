@@ -5,7 +5,7 @@
 class Student {
  public:
   // Constructor
-  Student(int UID, std::string name);
+  Student(int studentUID, std::string studentname);
 
   // Getters
   int getUID();
@@ -13,8 +13,8 @@ class Student {
   std::vector<int> getCourses();
 
   // Setters
-  void setUID(int UID);
-  void setName(std::string name);
+  void setUID(int studentUID);
+  void setName(std::string studentname);
 
   // Student's courses
   void addCourse(int courseCRN);
