@@ -4,8 +4,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "student.h"
-
 class Course {
  public:
   // Constructor

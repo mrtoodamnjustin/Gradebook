@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "gradebook.h"
-#include "student.h"
 
 enum Menu { MainMenu, Students, Classes, Student, Class };
 
