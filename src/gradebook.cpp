@@ -110,6 +110,20 @@ std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
   return grades;
 }
 
+std::vector<std::pair<std::string, int>> Gradebook::getStudentsGradesInCourse(
+    int studentUID, int courseCRN) {
+  Student* student = this->getStudent(studentUID);
+  Course* course = this->getCourse(courseCRN);
+
+  if (student == nullptr || course == nullptr) return {};
+
+  std::vector<std::pair<std::string, int>> grades;
+  auto assignments = course->getAssignments();
+  for (auto it = assignments.begin(); it != assignments.end(); it++) {
+    grades.push_back({it->first, it->second[studentUID]});
+  }
+}
+
 std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {
   std::vector<std::pair<int, int>> grades = {};
 
