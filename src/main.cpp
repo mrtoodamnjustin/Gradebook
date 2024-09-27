@@ -252,16 +252,32 @@ int main() {
         }
         break;
 
-      // TODO: implement
       case ClassMenu:
         switch (input.at(0)) {
           // View Assignments
-          case '1':
+          case '1': {
+            std::vector<std::string> assignments =
+                gradebook.getCourseAssignments(currentID);
+
+            std::cout << "Assignments: \n";
+            for (std::string assignment : assignments) {
+              std::cout << assignment << "\n";
+            }
             break;
+          }
 
           // View Students
-          case '2':
+          case '2': {
+            auto students = gradebook.getStudents(currentID);
+
+            // Set first int to grade instead of UID
+            for (auto student : students) {
+              student.first = gradebook.getGrade(student.first, currentID);
+            }
+
+            printEntities(students, "Student Name", "Grade");
             break;
+          }
 
           // Return
           case '3':
