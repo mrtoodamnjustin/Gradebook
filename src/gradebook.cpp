@@ -186,6 +186,8 @@ float Gradebook::getGPA(int studentUID) {
   std::vector<int> studentsCourses = student->getCourses();
   size_t numOfCourses = studentsCourses.size();
 
+  if (numOfCourses == 0) return -1;
+
   for (size_t i = 0; i < numOfCourses; i++) {
     sum += this->getGrade(studentUID, studentsCourses[i]);
   }
