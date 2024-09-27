@@ -58,6 +58,22 @@ std::vector<std::pair<int, std::string>> Gradebook::getStudents(int courseCRN) {
   return studentsInCourse;
 }
 
+std::string Gradebook::getCourseName(int courseCRN) {
+  Course* course = getCourse(courseCRN);
+
+  if (course == nullptr) return "";
+
+  return course->getName();
+}
+
+std::string Gradebook::getStudentName(int studentUID) {
+  Student* student = getStudent(studentUID);
+
+  if (student == nullptr) return "";
+
+  return student->getName();
+}
+
 float Gradebook::getGrade(int studentUID, int courseCRN) {
   Course* course = this->getCourse(courseCRN);
 
