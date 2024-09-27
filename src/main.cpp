@@ -9,16 +9,9 @@ void flushCin() {
   std::cin.ignore(256, '\n');
 }
 
-void printStudents(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Student Name\t\tUID\n\n";
-  for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << " \t\t\t" << entitites[i].first
-              << "\n ";
-  }
-}
-
-void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
-  std::cout << "Course Title\t\tCRN\n\n";
+void printEntities(std::vector<std::pair<int, std::string>>& entitites,
+                   std::string header1, std::string header2) {
+  std::cout << header1 << "\t\t" << header2 << "\n\n";
   for (size_t i = 0; i < entitites.size(); i++) {
     std::cout << entitites[i].second << "\t\t\t" << entitites[i].first << "\n";
   }
@@ -27,14 +20,6 @@ void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
 void printAbout() {}
 
 void printBadInput() {}
-
-void printAssignments(std::vector<std::pair<std::string, int>> assignments) {
-  std::cout << "Assignment\t\t\n\n";
-  for (size_t i = 0; i < assignments.size(); i++) {
-    std::cout << assignments[i].first << "\t\t" << assignments[i].second
-              << "\n";
-  }
-}
 
 int main() {
   Gradebook gradebook;
@@ -62,7 +47,7 @@ int main() {
 
       case AllStudentsMenu: {
         auto students = gradebook.getStudents();
-        printStudents(students);
+        printEntities(students, "Student Name", "UID");
         if (students.empty()) std::cout << "No results.\n";
         std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Student\n";
@@ -73,7 +58,7 @@ int main() {
 
       case AllClassesMenu: {
         auto courses = gradebook.getCourses();
-        printClasses(courses);
+        printEntities(courses, "Course Title", "CRN");
         if (courses.empty()) std::cout << "No results.\n";
         std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Class\n";
@@ -155,7 +140,7 @@ int main() {
 
       case AllStudentsMenu: {
         auto students = gradebook.getStudents();
-        printStudents(students);
+        printEntities(students, "Student Name", "UID");
 
         switch (input.at(0)) {
           // Add New Student
@@ -192,7 +177,7 @@ int main() {
       }
       case AllClassesMenu: {
         auto courses = gradebook.getCourses();
-        printClasses(courses);
+        printEntities(courses, "Course Title", "CRN");
 
         switch (input.at(0)) {
           // Add New Class
@@ -252,7 +237,7 @@ int main() {
             std::cin >> courseCRN;
             std::vector<std::pair<int, std::string>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
-            printAssignments(grades);
+            printEntities(grades, "Assignment", "Grade");
             break;
           }
 
