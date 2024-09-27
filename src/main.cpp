@@ -28,6 +28,14 @@ void printAbout() {}
 
 void printBadInput() {}
 
+void printAssignments(std::vector<std::pair<std::string, int>> assignments) {
+  std::cout << "Assignment\t\t\n\n";
+  for (size_t i = 0; i < assignments.size(); i++) {
+    std::cout << assignments[i].first << "\t\t" << assignments[i].second
+              << "\n";
+  }
+}
+
 int main() {
   Gradebook gradebook;
   std::cout
@@ -37,8 +45,10 @@ int main() {
   std::cout
       << "==================================================================\n";
   Menu currentMenu = MainMenu;
+  Menu previousMenu;
   int currentID;
   while (true) {
+    previousMenu = currentMenu;
     std::cout << "\n";
     std::cout << "To perform an action, enter the corresponding number.\n";
     std::cout << "Type 'q' to exit the program.\n";
@@ -217,23 +227,38 @@ int main() {
         break;
       }
 
-      // TODO: implement
       case StudentMenu:
         switch (input.at(0)) {
           // Add Class
           case '1':
+            int courseCRN;
+            std::cout << "Enter the course CRN: ";
+            std::cin >> courseCRN;
+            gradebook.addStudentToCourse(currentID, courseCRN);
             break;
 
           // Drop Class
           case '2':
+            int courseCRN;
+            std::cout << "Enter the course CRN: ";
+            std::cin >> courseCRN;
+            gradebook.removeStudentFromCourse(currentID, courseCRN);
             break;
 
           // View Class' Assignments
-          case '3':
+          case '3': {
+            int courseCRN;
+            std::cout << "Enter the course CRN: ";
+            std::cin >> courseCRN;
+            std::vector<std::pair<std::string, int>> grades =
+                gradebook.getStudentsGradesInCourse(currentID, courseCRN);
+            printAssignments(grades);
             break;
+          }
 
           // Return
           case '4':
+            currentMenu = previousMenu;
             break;
 
           default:
@@ -255,6 +280,7 @@ int main() {
 
           // Return
           case '3':
+            currentMenu = previousMenu;
             break;
 
           default:
