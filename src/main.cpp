@@ -85,6 +85,7 @@ int main() {
   Gradebook gradebook;
   std::cout << "Welcome to Consumer Softproducts interactive C++ gradebook!\n";
   Menu currentMenu = MainMenu;
+  int currentID;
   while (true) {
     std::cout << "\n";
     printMenu(currentMenu);
@@ -142,9 +143,13 @@ int main() {
             break;
           }
 
-          // Search Student By ID
+          // Search Student By UID
           case '2':
-            // TODO: allow user to open up profile by entering their details
+            int studentUID;
+            std::cout << "Enter the student's UID: \n";
+            std::cin >> studentUID;
+            currentID = studentUID;
+            currentMenu = StudentMenu;
             break;
 
           // Return To Main Menu
@@ -176,7 +181,11 @@ int main() {
           }
           // Search by ID
           case '2':
-            // TODO: allow user to view course by inputting CRN
+            int currentCRN;
+            std::cout << "Enter the class's CRN: \n";
+            std::cin >> currentCRN;
+            currentID = currentCRN;
+            currentMenu = ClassMenu;
             break;
 
           // Return To Main Menu
@@ -190,8 +199,10 @@ int main() {
         }
         break;
       }
+
       // TODO: implement
       case StudentMenu:
+
         switch (input.at(0)) {
           // View Grades
           case '1':
