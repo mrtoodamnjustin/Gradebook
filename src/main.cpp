@@ -25,16 +25,14 @@ void printMenu(Menu menu) {
 
     case Students:
       std::cout << "[1]   Add New Student\n";
-      std::cout << "[2]   View All Students\n";
-      std::cout << "[3]   Search Student by ID\n";
-      std::cout << "[4]   Back to Main Menu\n";
+      std::cout << "[2]   Search Student by ID\n";
+      std::cout << "[3]   Back to Main Menu\n";
       break;
 
     case Classes:
       std::cout << "[1]   Add New Class\n";
-      std::cout << "[2]   View All Classes\n";
-      std::cout << "[3]   Search Class by ID\n";
-      std::cout << "[4]   Back to Main Menu\n";
+      std::cout << "[2]   Search Class by ID\n";
+      std::cout << "[3]   Back to Main Menu\n";
       break;
 
     case Student:
@@ -45,9 +43,8 @@ void printMenu(Menu menu) {
 
     case Class:
       std::cout << "[1]   View Assignments\n";
-      std::cout << "[2]   View Class Grades\n";
-      std::cout << "[3]   View Students\n";
-      std::cout << "[4]   Return\n";
+      std::cout << "[2]   View Students\n";
+      std::cout << "[3]   Return\n";
 
     default:
       std::cout << "Err:  Invalid Menu Accessed...\n ";
