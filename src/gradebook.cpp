@@ -122,6 +122,8 @@ std::vector<std::pair<std::string, int>> Gradebook::getStudentsGradesInCourse(
   for (auto it = assignments.begin(); it != assignments.end(); it++) {
     grades.push_back({it->first, it->second[studentUID]});
   }
+
+  return grades;
 }
 
 std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {
