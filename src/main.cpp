@@ -30,10 +30,8 @@ int main() {
   std::cout
       << "==================================================================\n";
   Menu currentMenu = MainMenu;
-  Menu previousMenu;
   int currentID;
   while (true) {
-    previousMenu = currentMenu;
     std::cout << "\n";
     std::cout << "To perform an action, enter the corresponding number.\n";
     std::cout << "Type 'q' to exit the program.\n";
@@ -243,7 +241,7 @@ int main() {
 
           // Return
           case '4':
-            currentMenu = previousMenu;
+            currentMenu = MainMenu;
             break;
 
           default:
@@ -281,7 +279,7 @@ int main() {
 
           // Return
           case '3':
-            currentMenu = previousMenu;
+            currentMenu = MainMenu;
             break;
 
           default:
