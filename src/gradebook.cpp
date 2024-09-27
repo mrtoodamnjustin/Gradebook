@@ -4,12 +4,26 @@
 
 Gradebook::Gradebook(std::vector<Course> courses) { this->courses = courses; }
 
-std::vector<Course> Gradebook::getCourses() { return this->courses; }
+std::vector<std::pair<int, std::string>> Gradebook::getCourses() {
+  std::vector<std::pair<int, std::string>> coursesInfo;
+  for (size_t i = 0; i < this->courses.size(); i++) {
+    coursesInfo.push_back({courses[i].getCRN(), courses[i].getName()});
+  }
 
-std::vector<Student> Gradebook::getStudents() { return this->students; }
+  return coursesInfo;
+}
 
-std::vector<Course> Gradebook::getCourses(int studentUID) {
-  std::vector<Course> studentsCourses = {};
+std::vector<std::pair<int, std::string>> Gradebook::getStudents() {
+  std::vector<std::pair<int, std::string>> studentsInfo;
+  for (size_t i = 0; i < this->students.size(); i++) {
+    studentsInfo.push_back({students[i].getUID(), students[i].getName()});
+  }
+
+  return studentsInfo;
+}
+
+std::vector<std::pair<int, std::string>> Gradebook::getCourses(int studentUID) {
+  std::vector<std::pair<int, std::string>> studentsCourses = {};
   Student* student = getStudent(studentUID);
 
   if (student == nullptr) return {};
@@ -20,14 +34,15 @@ std::vector<Course> Gradebook::getCourses(int studentUID) {
   for (size_t i = 0; i < courseCRNs.size(); i++) {
     Course* course = getCourse(courseCRNs[i]);
 
-    if (course != nullptr) studentsCourses.push_back(*course);
+    if (course != nullptr)
+      studentsCourses.push_back({courseCRNs[i], course->getName()});
   }
 
   return studentsCourses;
 }
 
-std::vector<Student> Gradebook::getStudents(int courseCRN) {
-  std::vector<Student> studentsInCourse = {};
+std::vector<std::pair<int, std::string>> Gradebook::getStudents(int courseCRN) {
+  std::vector<std::pair<int, std::string>> studentsInCourse = {};
 
   Course* course = getCourse(courseCRN);
 
@@ -38,7 +53,8 @@ std::vector<Student> Gradebook::getStudents(int courseCRN) {
   for (size_t i = 0; i < studentsInCourse.size(); i++) {
     Student* student = getStudent(studentUIDs[i]);
 
-    if (student != nullptr) studentsInCourse.push_back(*student);
+    if (student != nullptr)
+      studentsInCourse.push_back({studentUIDs[i], student->getName()});
   }
 
   return studentsInCourse;
