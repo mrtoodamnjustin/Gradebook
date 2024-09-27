@@ -1,47 +1,9 @@
 #include <iostream>
 
 #include "gradebook.h"
+#include "utility.h"
 
 enum Menu { MainMenu, AllStudentsMenu, AllClassesMenu, StudentMenu, ClassMenu };
-
-void flushCin() {
-  std::cin.clear();
-  std::cin.ignore(256, '\n');
-}
-
-void printEntities(std::vector<std::pair<int, std::string>>& entitites,
-                   std::string header1, std::string header2) {
-  std::cout << header1 << "\t\t" << header2 << "\n\n";
-  for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << "\t\t\t" << entitites[i].first << "\n";
-  }
-}
-
-void printAbout() {
-  std::cout << "\n";
-  std::cout << "======================== About ========================\n";
-  std::cout << "Interactive Gradebook Program\n";
-  std::cout << "Version: 1.0\n";
-  std::cout << "Developed by: Justin Luque\n";
-  std::cout
-      << "Purpose: This program allows users to manage students, classes,\n";
-  std::cout << "         and their grades in an interactive manner.\n";
-  std::cout << "========================================================\n";
-  std::cout << "\n";
-}
-
-void printBadInput() {
-  std::cout << "\n";
-  std::cout << "Invalid input. Please enter a valid option from the menu.\n";
-  std::cout << "\n";
-}
-
-int getNumberInput(std::string inputMessage) {
-  int input;
-  std::cout << inputMessage;
-  std::cin >> input;
-  return input;
-}
 
 int main() {
   Gradebook gradebook;
@@ -67,7 +29,7 @@ int main() {
 
       case AllStudentsMenu: {
         auto students = gradebook.getStudents();
-        printEntities(students, "Student Name", "UID");
+        utils::printEntities(students, "Student Name", "UID");
         if (students.empty()) std::cout << "No results.\n";
         std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Student\n";
@@ -78,7 +40,7 @@ int main() {
 
       case AllClassesMenu: {
         auto courses = gradebook.getCourses();
-        printEntities(courses, "Course Title", "CRN");
+        utils::printEntities(courses, "Course Title", "CRN");
         if (courses.empty()) std::cout << "No results.\n";
         std::cout << "-----------------------------------------------\n";
         std::cout << "[1]   Add New Class\n";
@@ -149,18 +111,18 @@ int main() {
 
           // See About
           case '3':
-            printAbout();
+            utils::printAbout();
             break;
 
           default:
-            printBadInput();
+            utils::printBadInput();
             break;
         }
         break;
 
       case AllStudentsMenu: {
         auto students = gradebook.getStudents();
-        printEntities(students, "Student Name", "UID");
+        utils::printEntities(students, "Student Name", "UID");
 
         switch (input.at(0)) {
           // Add New Student
@@ -168,14 +130,14 @@ int main() {
             std::string name;
             std::cout << "Enter the student's name: ";
             std::cin >> name;
-            int studentUID = getNumberInput("Enter the student's UID: ");
+            int studentUID = utils::getNumberInput("Enter the student's UID: ");
             gradebook.createStudent(studentUID, name);
             break;
           }
 
           // Search Student By UID
           case '2': {
-            int studentUID = getNumberInput("Enter the student's UID: ");
+            int studentUID = utils::getNumberInput("Enter the student's UID: ");
             currentID = studentUID;
             currentMenu = StudentMenu;
             break;
@@ -187,14 +149,14 @@ int main() {
             break;
 
           default:
-            printBadInput();
+            utils::printBadInput();
             break;
         }
         break;
       }
       case AllClassesMenu: {
         auto courses = gradebook.getCourses();
-        printEntities(courses, "Course Title", "CRN");
+        utils::printEntities(courses, "Course Title", "CRN");
 
         switch (input.at(0)) {
           // Add New Class
@@ -202,13 +164,13 @@ int main() {
             std::string name;
             std::cout << "Enter the course's name: ";
             std::cin >> name;
-            int courseCRN = getNumberInput("Enter the class's CRN: ");
+            int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
             gradebook.createCourse(courseCRN, name);
             break;
           }
           // Search by ID
           case '2': {
-            int currentCRN = getNumberInput("Enter the class's CRN: ");
+            int currentCRN = utils::getNumberInput("Enter the class's CRN: ");
             currentID = currentCRN;
             currentMenu = ClassMenu;
             break;
@@ -220,7 +182,7 @@ int main() {
             break;
 
           default:
-            printBadInput();
+            utils::printBadInput();
             break;
         }
         break;
@@ -230,24 +192,24 @@ int main() {
         switch (input.at(0)) {
           // Add Class
           case '1': {
-            int courseCRN = getNumberInput("Enter the class's CRN: ");
+            int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
             gradebook.addStudentToCourse(currentID, courseCRN);
             break;
           }
 
           // Drop Class
           case '2': {
-            int courseCRN = getNumberInput("Enter the class's CRN: ");
+            int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
             gradebook.removeStudentFromCourse(currentID, courseCRN);
             break;
           }
 
           // View Class' Assignments
           case '3': {
-            int courseCRN = getNumberInput("Enter the class's CRN: ");
+            int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
             std::vector<std::pair<int, std::string>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
-            printEntities(grades, "Assignment", "Grade");
+            utils::printEntities(grades, "Assignment", "Grade");
             break;
           }
 
@@ -257,7 +219,7 @@ int main() {
             break;
 
           default:
-            printBadInput();
+            utils::printBadInput();
             break;
         }
         break;
@@ -285,7 +247,7 @@ int main() {
               student.first = gradebook.getGrade(student.first, currentID);
             }
 
-            printEntities(students, "Student Name", "Grade");
+            utils::printEntities(students, "Student Name", "Grade");
             break;
           }
 
@@ -295,7 +257,7 @@ int main() {
             break;
 
           default:
-            printBadInput();
+            utils::printBadInput();
             break;
         }
         break;

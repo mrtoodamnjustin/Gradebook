@@ -8,7 +8,7 @@ BIN := ./build
 ODIR := ./build/obj
 
 # Define file names
-SRCS := $(SRC)/student.cpp $(SRC)/gradebook.cpp $(SRC)/main.cpp $(SRC)/course.cpp
+SRCS := $(SRC)/student.cpp $(SRC)/gradebook.cpp $(SRC)/main.cpp $(SRC)/course.cpp $(SRC)/utility.cpp
 OBJS := $(SRCS:$(SRC)/%.cpp=$(ODIR)/%.o)
 
 # Define executable output name
