@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+#include "utility.h"
+
 std::vector<std::pair<std::string, int>> Gradebook::getCourses() {
   std::vector<std::pair<std::string, int>> coursesInfo;
   for (size_t i = 0; i < this->courses.size(); i++) {
@@ -189,7 +191,7 @@ float Gradebook::getGPA(int studentUID) {
   if (numOfCourses == 0) return -1;
 
   for (size_t i = 0; i < numOfCourses; i++) {
-    sum += this->getGrade(studentUID, studentsCourses[i]);
+    sum += utils::getGradePoint(this->getGrade(studentUID, studentsCourses[i]));
   }
 
   return sum / numOfCourses;
