@@ -19,36 +19,36 @@ void printMenu(Menu menu) {
   std::cout << "-----------------------------------------------\n";
   switch (menu) {
     case MainMenu:
-      std::cout << "[0]   See Classes\n";
-      std::cout << "[1]   See Students\n";
-      std::cout << "[2]   See about\n";
+      std::cout << "[1]   See Classes\n";
+      std::cout << "[2]   See Students\n";
+      std::cout << "[3]   See About\n";
       break;
 
     case Students:
-      std::cout << "[0]   Add New Student\n";
-      std::cout << "[1]   View All Students\n";
-      std::cout << "[2]   Search Student by ID\n";
-      std::cout << "[3]   Back to Main Menu\n";
+      std::cout << "[1]   Add New Student\n";
+      std::cout << "[2]   View All Students\n";
+      std::cout << "[3]   Search Student by ID\n";
+      std::cout << "[4]   Back to Main Menu\n";
       break;
 
     case Classes:
-      std::cout << "[0]   Add New Class\n";
-      std::cout << "[1]   View All Classes\n";
-      std::cout << "[2]   Search Class by ID\n";
-      std::cout << "[3]   Back to Main Menu\n";
+      std::cout << "[1]   Add New Class\n";
+      std::cout << "[2]   View All Classes\n";
+      std::cout << "[3]   Search Class by ID\n";
+      std::cout << "[4]   Back to Main Menu\n";
       break;
 
     case Student:
-      std::cout << "[0]   View Grades\n";
-      std::cout << "[1]   View Classes\n";
-      std::cout << "[2]   Return\n";
+      std::cout << "[1]   View Grades\n";
+      std::cout << "[2]   View Classes\n";
+      std::cout << "[3]   Return\n";
       break;
 
     case Class:
-      std::cout << "[0]   View Assignments\n";
-      std::cout << "[1]   View Class Grades\n";
-      std::cout << "[2]   View Students\n";
-      std::cout << "[3]   Return\n";
+      std::cout << "[1]   View Assignments\n";
+      std::cout << "[2]   View Class Grades\n";
+      std::cout << "[3]   View Students\n";
+      std::cout << "[4]   Return\n";
 
     default:
       std::cout << "Err:  Invalid Menu Accessed...\n ";
