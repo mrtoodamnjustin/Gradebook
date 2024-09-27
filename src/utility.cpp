@@ -43,4 +43,21 @@ int getNumberInput(std::string inputMessage) {
   std::cin >> input;
   return input;
 }
+
+float getGradePoint(int grade) {
+  if (grade >= 90)
+    return 4.0;
+
+  else if (grade >= 80)
+    return 3.0;
+
+  else if (grade >= 70)
+    return 2.0;
+
+  else if (grade >= 60)
+    return 1.0;
+
+  else
+    return 0.0;
+}
 }  // namespace utils

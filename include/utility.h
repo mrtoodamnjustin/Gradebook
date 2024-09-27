@@ -13,4 +13,6 @@ void printAbout();
 void printBadInput();
 
 int getNumberInput(std::string inputMessage);
+
+float getGradePoint(int grade);
 }  // namespace utils
