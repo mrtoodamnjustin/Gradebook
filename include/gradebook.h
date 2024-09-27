@@ -10,8 +10,10 @@ class Gradebook {
   std::vector<std::pair<int, std::string>> getCourses();
   std::vector<std::pair<int, std::string>> getStudents();
 
-  std::vector<std::pair<int, std::string>> getCourses(int courseCRN);
-  std::vector<std::pair<int, std::string>> getStudents(int studentUID);
+  // Get student's courses
+  std::vector<std::pair<int, std::string>> getCourses(int studentUID);
+  // Get course's students
+  std::vector<std::pair<int, std::string>> getStudents(int courseCRN);
 
   std::string getCourseName(int courseCRN);
   std::string getStudentName(int studentUID);
