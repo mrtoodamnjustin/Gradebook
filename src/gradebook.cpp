@@ -2,26 +2,26 @@
 
 #include <algorithm>
 
-std::vector<std::pair<int, std::string>> Gradebook::getCourses() {
-  std::vector<std::pair<int, std::string>> coursesInfo;
+std::vector<std::pair<std::string, int>> Gradebook::getCourses() {
+  std::vector<std::pair<std::string, int>> coursesInfo;
   for (size_t i = 0; i < this->courses.size(); i++) {
-    coursesInfo.push_back({courses[i].getCRN(), courses[i].getName()});
+    coursesInfo.push_back({courses[i].getName(), courses[i].getCRN()});
   }
 
   return coursesInfo;
 }
 
-std::vector<std::pair<int, std::string>> Gradebook::getStudents() {
-  std::vector<std::pair<int, std::string>> studentsInfo;
+std::vector<std::pair<std::string, int>> Gradebook::getStudents() {
+  std::vector<std::pair<std::string, int>> studentsInfo;
   for (size_t i = 0; i < this->students.size(); i++) {
-    studentsInfo.push_back({students[i].getUID(), students[i].getName()});
+    studentsInfo.push_back({students[i].getName(), students[i].getUID()});
   }
 
   return studentsInfo;
 }
 
-std::vector<std::pair<int, std::string>> Gradebook::getCourses(int studentUID) {
-  std::vector<std::pair<int, std::string>> studentsCourses = {};
+std::vector<std::pair<std::string, int>> Gradebook::getCourses(int studentUID) {
+  std::vector<std::pair<std::string, int>> studentsCourses = {};
   Student* student = getStudent(studentUID);
 
   if (student == nullptr) return {};
@@ -33,14 +33,14 @@ std::vector<std::pair<int, std::string>> Gradebook::getCourses(int studentUID) {
     Course* course = getCourse(courseCRNs[i]);
 
     if (course != nullptr)
-      studentsCourses.push_back({courseCRNs[i], course->getName()});
+      studentsCourses.push_back({course->getName(), courseCRNs[i]});
   }
 
   return studentsCourses;
 }
 
-std::vector<std::pair<int, std::string>> Gradebook::getStudents(int courseCRN) {
-  std::vector<std::pair<int, std::string>> studentsInCourse = {};
+std::vector<std::pair<std::string, int>> Gradebook::getStudents(int courseCRN) {
+  std::vector<std::pair<std::string, int>> studentsInCourse = {};
 
   Course* course = getCourse(courseCRN);
 
@@ -52,7 +52,7 @@ std::vector<std::pair<int, std::string>> Gradebook::getStudents(int courseCRN) {
     Student* student = getStudent(studentUIDs[i]);
 
     if (student != nullptr)
-      studentsInCourse.push_back({studentUIDs[i], student->getName()});
+      studentsInCourse.push_back({student->getName(), studentUIDs[i]});
   }
 
   return studentsInCourse;
@@ -111,17 +111,17 @@ std::vector<std::pair<int, int>> Gradebook::getStudentGrades(int studentUID) {
 }
 
 // Returns vector<pair<grade, assignmet name>>
-std::vector<std::pair<int, std::string>> Gradebook::getStudentsGradesInCourse(
+std::vector<std::pair<std::string, int>> Gradebook::getStudentsGradesInCourse(
     int studentUID, int courseCRN) {
   Student* student = this->getStudent(studentUID);
   Course* course = this->getCourse(courseCRN);
 
   if (student == nullptr || course == nullptr) return {};
 
-  std::vector<std::pair<int, std::string>> grades;
+  std::vector<std::pair<std::string, int>> grades;
   auto assignments = course->getAssignments();
   for (auto it = assignments.begin(); it != assignments.end(); it++) {
-    grades.push_back({it->second[studentUID], it->first});
+    grades.push_back({it->first, it->second[studentUID]});
   }
 
   return grades;

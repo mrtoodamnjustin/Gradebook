@@ -207,7 +207,7 @@ int main() {
           // View Class' Assignments
           case '3': {
             int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
-            std::vector<std::pair<int, std::string>> grades =
+            std::vector<std::pair<std::string, int>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
             utils::printEntities(grades, "Assignment", "Grade");
             break;
@@ -244,7 +244,7 @@ int main() {
 
             // Set first int to grade instead of UID
             for (auto student : students) {
-              student.first = gradebook.getGrade(student.first, currentID);
+              student.first = gradebook.getGrade(student.second, currentID);
             }
 
             utils::printEntities(students, "Student Name", "Grade");

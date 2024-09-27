@@ -10,11 +10,11 @@ void flushCin() {
   std::cin.ignore(256, '\n');
 }
 
-void printEntities(std::vector<std::pair<int, std::string>>& entitites,
+void printEntities(std::vector<std::pair<std::string, int>>& entitites,
                    std::string header1, std::string header2) {
   std::cout << header1 << "\t\t" << header2 << "\n\n";
   for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << "\t\t\t" << entitites[i].first << "\n";
+    std::cout << entitites[i].first << "\t\t\t" << entitites[i].second << "\n";
   }
 }
 

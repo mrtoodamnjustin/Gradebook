@@ -7,13 +7,13 @@
 
 class Gradebook {
  public:
-  std::vector<std::pair<int, std::string>> getCourses();
-  std::vector<std::pair<int, std::string>> getStudents();
+  std::vector<std::pair<std::string, int>> getCourses();
+  std::vector<std::pair<std::string, int>> getStudents();
 
   // Get student's courses
-  std::vector<std::pair<int, std::string>> getCourses(int studentUID);
+  std::vector<std::pair<std::string, int>> getCourses(int studentUID);
   // Get course's students
-  std::vector<std::pair<int, std::string>> getStudents(int courseCRN);
+  std::vector<std::pair<std::string, int>> getStudents(int courseCRN);
 
   std::string getCourseName(int courseCRN);
   std::string getStudentName(int studentUID);
@@ -23,7 +23,7 @@ class Gradebook {
   // Returns vector of pair<courseCRN, grade>
   std::vector<std::pair<int, int>> getStudentGrades(int studentUID);
 
-  std::vector<std::pair<int, std::string>> getStudentsGradesInCourse(
+  std::vector<std::pair<std::string, int>> getStudentsGradesInCourse(
       int studentUID, int courseCRN);
 
   // Returns vector of pair<studentUID, grade>
