@@ -154,6 +154,8 @@ std::vector<std::string> Gradebook::getCourseAssignments(int courseCRN) {
   for (auto it = assignmentMap.begin(); it != assignmentMap.end(); it++) {
     assignments.push_back(it->first);
   }
+
+  return assignments;
 }
 
 int Gradebook::getCourseAverageGrade(int courseCRN) {
