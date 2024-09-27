@@ -158,6 +158,7 @@ std::vector<std::string> Gradebook::getCourseAssignments(int courseCRN) {
   return assignments;
 }
 
+// Returns -1 if unsuccesful
 int Gradebook::getCourseAverageGrade(int courseCRN) {
   int sum = 0;
   Course* course = this->getCourse(courseCRN);
@@ -165,6 +166,9 @@ int Gradebook::getCourseAverageGrade(int courseCRN) {
   if (course == nullptr) return -1;
 
   std::vector<int> students = course->getStudents();
+
+  if (students.size() == 0) return -1;
+
   for (size_t i = 0; i < students.size(); i++) {
     sum += (float)getGrade(students[i], courseCRN) /
            course->getAssignments().size();
