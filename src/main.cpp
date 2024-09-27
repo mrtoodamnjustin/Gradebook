@@ -51,13 +51,13 @@ int main() {
 
       case StudentMenu: {
         auto studentGrades = gradebook.getStudentGrades(currentID);
-        std::cout << "Classes\t\tGrades";
+        std::cout << "Classes\t\t\tGrades\n\n";
         for (size_t i = 0; i < studentGrades.size(); i++) {
           std::cout << gradebook.getCourseName(studentGrades[i].first) << "\t\t"
                     << gradebook.getGrade(currentID, studentGrades[i].first)
-                    << "\n";
+                    << "\n\n";
         }
-        std::cout << "Student GPA: " << gradebook.getGPA(currentID);
+        std::cout << "\nStudent GPA: " << gradebook.getGPA(currentID) << "\n";
 
         std::cout << "[1]   Add Class\n";
         std::cout << "[2]   Drop Class\n";
