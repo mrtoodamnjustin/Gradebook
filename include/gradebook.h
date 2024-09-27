@@ -27,6 +27,8 @@ class Gradebook {
   // Returns vector of pair<studentUID, grade>
   std::vector<std::pair<int, int>> getCourseGrades(int courseCRN);
 
+  std::vector<std::string> getCourseAssignments(int courseCRN);
+
   int getCourseAverageGrade(int courseCRN);
 
   float getGPA(int studentUID);

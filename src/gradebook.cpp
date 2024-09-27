@@ -143,6 +143,19 @@ std::vector<std::pair<int, int>> Gradebook::getCourseGrades(int courseCRN) {
   return grades;
 }
 
+std::vector<std::string> Gradebook::getCourseAssignments(int courseCRN) {
+  std::vector<std::string> assignments;
+
+  Course* course = this->getCourse(courseCRN);
+
+  if (course == nullptr) return {};
+
+  auto assignmentMap = course->getAssignments();
+  for (auto it = assignmentMap.begin(); it != assignmentMap.end(); it++) {
+    assignments.push_back(it->first);
+  }
+}
+
 int Gradebook::getCourseAverageGrade(int courseCRN) {
   int sum = 0;
   Course* course = this->getCourse(courseCRN);
