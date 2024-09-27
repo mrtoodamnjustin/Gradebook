@@ -10,7 +10,7 @@ Note that not all algorithms in this project might be the most optimal solution,
 
 ## Building
 
-If you have make installed, you can simply run the make command. This requires an installation of g++ that is avaialable in the command line.
+If you have make installed, you can simply run the make command. This requires an installation of g++ that is available on the command line.
 
 > This makefile was created with the intention of being ran on Windows. If you are building on a UNIX-like operating system, some refactoring might be necessary.
 
