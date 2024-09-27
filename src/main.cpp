@@ -2,7 +2,15 @@
 
 #include "gradebook.h"
 
-enum Menu { MainMenu, Students, Classes, Student, Class };
+enum Menu {
+  MainMenu,
+  AllStudentsMenu,
+  AllClassesMenu,
+  StudentMenu,
+  ClassMenu,
+  AboutMenu,
+  BadInput
+};
 
 void flushCin() {
   std::cin.clear();
@@ -23,28 +31,35 @@ void printMenu(Menu menu) {
       std::cout << "[3]   See About\n";
       break;
 
-    case Students:
+    case AllStudentsMenu:
       std::cout << "[1]   Add New Student\n";
       std::cout << "[2]   Search Student by ID\n";
       std::cout << "[3]   Back to Main Menu\n";
       break;
 
-    case Classes:
+    case AllClassesMenu:
       std::cout << "[1]   Add New Class\n";
       std::cout << "[2]   Search Class by ID\n";
       std::cout << "[3]   Back to Main Menu\n";
       break;
 
-    case Student:
+    case StudentMenu:
       std::cout << "[1]   View Grades\n";
       std::cout << "[2]   View Classes\n";
       std::cout << "[3]   Return\n";
       break;
 
-    case Class:
+    case ClassMenu:
       std::cout << "[1]   View Assignments\n";
       std::cout << "[2]   View Students\n";
       std::cout << "[3]   Return\n";
+      break;
+
+    case AboutMenu:
+      break;
+
+    case BadInput:
+      break;
 
     default:
       std::cout << "Err:  Invalid Menu Accessed...\n ";
@@ -52,30 +67,167 @@ void printMenu(Menu menu) {
   std::cout << "-----------------------------------------------\n";
 }
 
-void printNameAndIDs(std::vector<std::pair<int, std::string>>& entitites) {
+void printStudents(std::vector<std::pair<int, std::string>>& entitites) {
+  std::cout << "Student Name:\t\tUID:\n";
   for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].second << " (" << entitites[i].first << ")";
+    std::cout << entitites[i].second << " \t\t(" << entitites[i].first << ")\n";
+  }
+}
+
+void printClasses(std::vector<std::pair<int, std::string>>& entitites) {
+  std::cout << "Course Title:\t\tCRN:\n";
+  for (size_t i = 0; i < entitites.size(); i++) {
+    std::cout << entitites[i].second << "\t\t(" << entitites[i].first << ")\n";
   }
 }
 
 int main() {
+  Gradebook gradebook;
   std::cout << "Welcome to Consumer Softproducts interactive C++ gradebook!\n";
   Menu currentMenu = MainMenu;
   while (true) {
+    std::cout << "\n";
     printMenu(currentMenu);
 
     std::string input;
     std::cin >> input;
+    std::cout << "\n";
 
-    // TODO: Peform different switch cases depending on currentMenu?
-    //       i.e. nested switch statement?
-    switch (tolower(input.at(0))) {
-      case 'q':
-        // TODO: save grades?
-        return 0;
+    if (input.size() == 1 && tolower(input.at(0)) == 'q') return 0;
+
+    switch (currentMenu) {
+      case MainMenu:
+        switch (input.at(0)) {
+          // See Classes
+          case '1': {
+            auto courses = gradebook.getCourses();
+            printClasses(courses);
+            currentMenu = AllClassesMenu;
+            break;
+          }
+
+          // See Students
+          case '2': {
+            auto students = gradebook.getStudents();
+            printStudents(students);
+            currentMenu = AllStudentsMenu;
+            break;
+          }
+
+          // See About
+          case '3':
+            printMenu(AboutMenu);
+            break;
+
+          default:
+            printMenu(BadInput);
+            break;
+        }
         break;
 
-      default:
+      case AllStudentsMenu: {
+        auto students = gradebook.getStudents();
+        printStudents(students);
+
+        switch (input.at(0)) {
+          // Add New Student
+          case '1': {
+            int studentUID;
+            std::string name;
+            std::cout << "Enter the student's name: ";
+            std::cin >> name;
+            std::cout << "Enter the student's UID: ";
+            std::cin >> studentUID;
+            gradebook.createStudent(studentUID, name);
+            break;
+          }
+
+          // Search Student By ID
+          case '2':
+            // TODO: allow user to open up profile by entering their details
+            break;
+
+          // Return To Main Menu
+          case '3':
+            currentMenu = MainMenu;
+            break;
+
+          default:
+            printMenu(BadInput);
+            break;
+        }
+        break;
+      }
+      case AllClassesMenu: {
+        auto courses = gradebook.getCourses();
+        printClasses(courses);
+
+        switch (input.at(0)) {
+          // Add New Class
+          case '1': {
+            int courseCRN;
+            std::string name;
+            std::cout << "Enter the course's name: ";
+            std::cin >> name;
+            std::cout << "Enter the course's CRN: ";
+            std::cin >> courseCRN;
+            gradebook.createCourse(courseCRN, name);
+            break;
+          }
+          // Search by ID
+          case '2':
+            // TODO: allow user to view course by inputting CRN
+            break;
+
+          // Return To Main Menu
+          case '3':
+            currentMenu = MainMenu;
+            break;
+
+          default:
+            printMenu(BadInput);
+            break;
+        }
+        break;
+      }
+      // TODO: implement
+      case StudentMenu:
+        switch (input.at(0)) {
+          // View Grades
+          case '1':
+            break;
+
+          // View Classes
+          case '2':
+            break;
+
+          // Return
+          case '3':
+            break;
+
+          default:
+            break;
+        }
+        break;
+
+      // TODO: implement
+      case ClassMenu:
+        switch (input.at(0)) {
+          // View Assignments
+          case '1':
+            break;
+
+          // View Students
+          case '2':
+            break;
+
+          // Return
+          case '3':
+            break;
+
+          default:
+            break;
+        }
         break;
     }
   }
