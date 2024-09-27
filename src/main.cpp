@@ -36,6 +36,13 @@ void printBadInput() {
   std::cout << "\n";
 }
 
+int getNumberInput(std::string inputMessage) {
+  int input;
+  std::cout << inputMessage;
+  std::cin >> input;
+  return input;
+}
+
 int main() {
   Gradebook gradebook;
   std::cout
@@ -158,24 +165,21 @@ int main() {
         switch (input.at(0)) {
           // Add New Student
           case '1': {
-            int studentUID;
             std::string name;
             std::cout << "Enter the student's name: ";
             std::cin >> name;
-            std::cout << "Enter the student's UID: ";
-            std::cin >> studentUID;
+            int studentUID = getNumberInput("Enter the student's UID: ");
             gradebook.createStudent(studentUID, name);
             break;
           }
 
           // Search Student By UID
-          case '2':
-            int studentUID;
-            std::cout << "Enter the student's UID: \n";
-            std::cin >> studentUID;
+          case '2': {
+            int studentUID = getNumberInput("Enter the student's UID: ");
             currentID = studentUID;
             currentMenu = StudentMenu;
             break;
+          }
 
           // Return To Main Menu
           case '3':
@@ -195,23 +199,20 @@ int main() {
         switch (input.at(0)) {
           // Add New Class
           case '1': {
-            int courseCRN;
             std::string name;
             std::cout << "Enter the course's name: ";
             std::cin >> name;
-            std::cout << "Enter the course's CRN: ";
-            std::cin >> courseCRN;
+            int courseCRN = getNumberInput("Enter the class's CRN: ");
             gradebook.createCourse(courseCRN, name);
             break;
           }
           // Search by ID
-          case '2':
-            int currentCRN;
-            std::cout << "Enter the class's CRN: \n";
-            std::cin >> currentCRN;
+          case '2': {
+            int currentCRN = getNumberInput("Enter the class's CRN: ");
             currentID = currentCRN;
             currentMenu = ClassMenu;
             break;
+          }
 
           // Return To Main Menu
           case '3':
@@ -229,25 +230,21 @@ int main() {
         switch (input.at(0)) {
           // Add Class
           case '1': {
-            int courseCRN;
-            std::cout << "Enter the course CRN: ";
-            std::cin >> courseCRN;
+            int courseCRN = getNumberInput("Enter the class's CRN: ");
             gradebook.addStudentToCourse(currentID, courseCRN);
             break;
           }
+
           // Drop Class
           case '2': {
-            int courseCRN;
-            std::cout << "Enter the course CRN: ";
-            std::cin >> courseCRN;
+            int courseCRN = getNumberInput("Enter the class's CRN: ");
             gradebook.removeStudentFromCourse(currentID, courseCRN);
             break;
           }
+
           // View Class' Assignments
           case '3': {
-            int courseCRN;
-            std::cout << "Enter the course CRN: ";
-            std::cin >> courseCRN;
+            int courseCRN = getNumberInput("Enter the class's CRN: ");
             std::vector<std::pair<int, std::string>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
             printEntities(grades, "Assignment", "Grade");
