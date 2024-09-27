@@ -26,7 +26,6 @@ class Gradebook {
   void createCourse(int courseCRN, std::string courseName);
 
   void createStudent(int studentUID, std::string studentName);
-  // TODO: finish implementation
 
  private:
   Student* getStudent(int studentUID);
