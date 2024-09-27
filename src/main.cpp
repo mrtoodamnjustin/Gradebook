@@ -17,7 +17,18 @@ void printEntities(std::vector<std::pair<int, std::string>>& entitites,
   }
 }
 
-void printAbout() {}
+void printAbout() {
+  std::cout << "\n";
+  std::cout << "======================== About ========================\n";
+  std::cout << "Interactive Gradebook Program\n";
+  std::cout << "Version: 1.0\n";
+  std::cout << "Developed by: Justin Luque\n";
+  std::cout
+      << "Purpose: This program allows users to manage students, classes,\n";
+  std::cout << "         and their grades in an interactive manner.\n";
+  std::cout << "========================================================\n";
+  std::cout << "\n";
+}
 
 void printBadInput() {
   std::cout << "\n";
