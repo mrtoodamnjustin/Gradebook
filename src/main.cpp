@@ -206,6 +206,7 @@ int main() {
             break;
 
           default:
+            printMenu(BadInput);
             break;
         }
         break;
@@ -226,6 +227,7 @@ int main() {
             break;
 
           default:
+            printMenu(BadInput);
             break;
         }
         break;
