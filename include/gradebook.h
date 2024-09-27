@@ -21,7 +21,7 @@ class Gradebook {
   // Returns vector of pair<courseCRN, grade>
   std::vector<std::pair<int, int>> getStudentGrades(int studentUID);
 
-  std::vector<std::pair<std::string, int>> getStudentsGradesInCourse(
+  std::vector<std::pair<int, std::string>> getStudentsGradesInCourse(
       int studentUID, int courseCRN);
 
   // Returns vector of pair<studentUID, grade>

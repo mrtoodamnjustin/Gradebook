@@ -250,7 +250,7 @@ int main() {
             int courseCRN;
             std::cout << "Enter the course CRN: ";
             std::cin >> courseCRN;
-            std::vector<std::pair<std::string, int>> grades =
+            std::vector<std::pair<int, std::string>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
             printAssignments(grades);
             break;
