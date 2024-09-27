@@ -1,5 +1,7 @@
 #include "course.h"
 
+#include <algorithm>
+
 enum gradeFlags {
   Ungraded = -1,
   Missing = -2,
