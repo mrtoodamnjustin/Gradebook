@@ -215,21 +215,21 @@ int main() {
       case StudentMenu:
         switch (input.at(0)) {
           // Add Class
-          case '1':
+          case '1': {
             int courseCRN;
             std::cout << "Enter the course CRN: ";
             std::cin >> courseCRN;
             gradebook.addStudentToCourse(currentID, courseCRN);
             break;
-
+          }
           // Drop Class
-          case '2':
+          case '2': {
             int courseCRN;
             std::cout << "Enter the course CRN: ";
             std::cin >> courseCRN;
             gradebook.removeStudentFromCourse(currentID, courseCRN);
             break;
-
+          }
           // View Class' Assignments
           case '3': {
             int courseCRN;
