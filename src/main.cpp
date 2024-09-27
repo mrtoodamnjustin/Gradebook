@@ -90,6 +90,7 @@ int main() {
 
     std::string input;
     std::cin >> input;
+    utils::flushCin();
     std::cout << "\n";
 
     if (input.size() == 1 && tolower(input.at(0)) == 'q') return 0;
@@ -129,7 +130,7 @@ int main() {
           case '1': {
             std::string name;
             std::cout << "Enter the student's name: ";
-            std::cin >> name;
+            std::getline(std::cin, name);
             int studentUID = utils::getNumberInput("Enter the student's UID: ");
             gradebook.createStudent(studentUID, name);
             break;
@@ -163,7 +164,7 @@ int main() {
           case '1': {
             std::string name;
             std::cout << "Enter the course's name: ";
-            std::cin >> name;
+            std::getline(std::cin, name);
             int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
             gradebook.createCourse(courseCRN, name);
             break;
