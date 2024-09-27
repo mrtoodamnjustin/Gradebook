@@ -59,17 +59,38 @@ int main() {
         std::cout << "[3]   Back to Main Menu\n";
         break;
 
-      case StudentMenu:
+      case StudentMenu: {
+        auto studentGrades = gradebook.getStudentGrades(currentID);
+        std::cout << "Classes\t\tGrades";
+        for (size_t i = 0; i < studentGrades.size(); i++) {
+          std::cout << gradebook.getCourseName(studentGrades[i].first) << "\t\t"
+                    << gradebook.getGrade(currentID, studentGrades[i].first)
+                    << "\n";
+        }
+        std::cout << "Student GPA: " << gradebook.getGPA(currentID);
+
         std::cout << "[1]   View Grades\n";
         std::cout << "[2]   View Classes\n";
         std::cout << "[3]   Return\n";
         break;
+      }
 
-      case ClassMenu:
+      case ClassMenu: {
+        auto studentGrades = gradebook.getCourseGrades(currentID);
+        std::cout << "Classes\t\tGrades";
+        for (size_t i = 0; i < studentGrades.size(); i++) {
+          std::cout << gradebook.getCourseName(studentGrades[i].first) << "\t\t"
+                    << gradebook.getGrade(currentID, studentGrades[i].first)
+                    << "\n";
+        }
+        std::cout << "Course Average: "
+                  << gradebook.getCourseAverageGrade(currentID);
+
         std::cout << "[1]   View Assignments\n";
         std::cout << "[2]   View Students\n";
         std::cout << "[3]   Return\n";
         break;
+      }
 
       default:
         std::cout << "Err:  Invalid Menu Accessed...\n ";
@@ -188,7 +209,6 @@ int main() {
 
       // TODO: implement
       case StudentMenu:
-
         switch (input.at(0)) {
           // View Grades
           case '1':
@@ -207,7 +227,7 @@ int main() {
             break;
         }
         break;
-      }
+
       // TODO: implement
       case ClassMenu:
         switch (input.at(0)) {
