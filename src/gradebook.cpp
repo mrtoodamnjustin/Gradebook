@@ -167,6 +167,32 @@ void Gradebook::createStudent(int studentUID, std::string studentName) {
   this->students.push_back(student);
 }
 
+void Gradebook::addStudentToCourse(int studentUID, int courseCRN) {
+  Student* student = nullptr;
+  Course* course = nullptr;
+
+  student = this->getStudent(studentUID);
+  course = this->getCourse(courseCRN);
+
+  if (student == nullptr || course == nullptr) return;
+
+  student->addCourse(courseCRN);
+  course->addStudent(studentUID);
+}
+
+void Gradebook::removeStudentFromCourse(int studentUID, int courseCRN) {
+  Student* student = nullptr;
+  Course* course = nullptr;
+
+  student = this->getStudent(studentUID);
+  course = this->getCourse(courseCRN);
+
+  if (student == nullptr || course == nullptr) return;
+
+  student->removeCourse(courseCRN);
+  course->removeStudent(studentUID);
+}
+
 // PRIVATE
 Student* Gradebook::getStudent(int studentUID) {
   Student* student = nullptr;

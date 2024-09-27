@@ -32,6 +32,10 @@ class Gradebook {
 
   void createStudent(int studentUID, std::string studentName);
 
+  void addStudentToCourse(int studentUID, int courseCRN);
+
+  void removeStudentFromCourse(int studentUID, int courseCRN);
+
  private:
   Student* getStudent(int studentUID);
   Course* getCourse(int courseCRN);
