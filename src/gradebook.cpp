@@ -211,6 +211,22 @@ void Gradebook::gradeAssignment(int studentUID, int courseCRN,
   course->gradeAssignment(studentUID, assignment, grade);
 }
 
+void Gradebook::createAssignment(std::string assignment, int courseCRN) {
+  Course* course = this->getCourse(courseCRN);
+
+  if (course == nullptr) return;
+
+  course->createAssignment(assignment);
+}
+
+void Gradebook::deleteAssignment(std::string assignment, int courseCRN) {
+  Course* course = this->getCourse(courseCRN);
+
+  if (course == nullptr) return;
+
+  course->deleteAssignment(assignment);
+}
+
 void Gradebook::createCourse(int courseCRN, std::string courseName) {
   Course course(courseCRN, courseName);
   this->courses.push_back(course);

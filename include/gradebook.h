@@ -39,6 +39,10 @@ class Gradebook {
   void gradeAssignment(int studentUID, int courseCRN, std::string assignment,
                        int grade);
 
+  void createAssignment(std::string assignment, int courseCRN);
+
+  void deleteAssignment(std::string assignment, int courseCRN);
+
   void createCourse(int courseCRN, std::string courseName);
 
   void createStudent(int studentUID, std::string studentName);
