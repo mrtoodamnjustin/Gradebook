@@ -13,6 +13,17 @@ std::string Student::getName() { return this->name; }
 
 std::vector<int> Student::getCourses() { return this->courses; }
 
+bool Student::isInCourse(int courseCRN) {
+  bool exists = false;
+  for (size_t i = 0; i < this->courses.size(); i++) {
+    if (courses[i] == courseCRN) {
+      exists = true;
+      break;
+    }
+  }
+  return exists;
+}
+
 void Student::setUID(int studentUID) { this->UID = studentUID; }
 
 void Student::setName(std::string studentName) { this->name = studentName; }

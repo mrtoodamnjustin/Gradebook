@@ -11,6 +11,7 @@ class Student {
   int getUID();
   std::string getName();
   std::vector<int> getCourses();
+  bool isInCourse(int courseCRN);
 
   // Setters
   void setUID(int studentUID);
