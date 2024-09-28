@@ -1,14 +1,9 @@
 #include "utility.h"
 
-#include <algorithm>
-#include <iomanip>
 #include <iostream>
 #include <string>
-#include <vector>
 
-using std::pair;
 using std::string;
-using std::vector;
 
 namespace utils {
 void flushCin() {
@@ -16,24 +11,7 @@ void flushCin() {
   std::cin.ignore(256, '\n');
 }
 
-void printEntities(vector<pair<string, int>>& entities, string header1,
-                   string header2) {
-  int greatestLen = header1.length();
-
-  for (size_t i = 0; i < entities.size(); i++) {
-    int len = entities[i].first.size();
-    if (len > greatestLen) {
-      greatestLen = len;
-    }
-  }
-
-  int width = std::max(20, greatestLen + 6);
-  std::cout << std::left << std::setw(width) << header1 << header2 << "\n\n";
-  for (size_t i = 0; i < entities.size(); i++) {
-    std::cout << std::left << std::setw(width) << entities[i].first
-              << entities[i].second << "\n";
-  }
-}
+std::string toString(const std::string& value) { return value; }
 
 void printAbout() {
   std::cout << "\n";
