@@ -11,14 +11,16 @@ enum Menu { MainMenu, AllStudentsMenu, AllClassesMenu, StudentMenu, ClassMenu };
 
 int main() {
   Gradebook gradebook;
+  Menu currentMenu = MainMenu;
+  int currentID;
+
   std::cout
       << "==================================================================\n";
   std::cout
       << "  Welcome to my interactive gradebook! Please select an option:\n";
   std::cout
       << "==================================================================\n";
-  Menu currentMenu = MainMenu;
-  int currentID;
+
   while (true) {
     std::cout << "\n";
     std::cout << "To perform an action, enter the corresponding number.\n";
