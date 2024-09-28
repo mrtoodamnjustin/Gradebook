@@ -76,11 +76,9 @@ int main() {
       }
 
       case ClassMenu: {
-        auto studentGrades = gradebook.getCourseGrades(currentID);
+        int courseAverage = gradebook.getCourseAverageGrade(currentID);
         std::cout << gradebook.getCourseName(currentID) << " (" << currentID
                   << ")\n\n";
-
-        int courseAverage = gradebook.getCourseAverageGrade(currentID);
         std::cout << "Course Average: "
                   << ((courseAverage != -1) ? std::to_string(courseAverage)
                                             : "nil")
