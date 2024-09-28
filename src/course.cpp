@@ -41,6 +41,13 @@ void Course::deleteAssignment(std::string assignment) {
   this->assignments.erase(assignment);
 }
 
+void Course::gradeAssignment(int studentUID, std::string assignment,
+                             int grade) {
+  if (!this->studentExists(studentUID)) return;
+
+  this->assignments[assignment][studentUID] = grade;
+}
+
 // Students
 void Course::addStudent(int studentUID) {
   auto it = std::find(this->students.begin(), this->students.end(), studentUID);

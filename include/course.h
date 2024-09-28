@@ -25,7 +25,7 @@ class Course {
   void createAssignment(std::string assignment);
   void deleteAssignment(std::string assignment);
 
-  void gradeAssignment(std::string assignment, int studentUID);
+  void gradeAssignment(int studentUID, std::string assignment, int grade);
 
   // Students
   void addStudent(int studentUID);
