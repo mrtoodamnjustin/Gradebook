@@ -186,6 +186,15 @@ int Gradebook::getCourseAverageGrade(int courseCRN) {
   return sum / students.size();
 }
 
+unordered_map<int, int> Gradebook::getAssignmentGrades(int courseCRN,
+                                                       string assignment) {
+  Course* course = this->getCourse(courseCRN);
+
+  if (course == nullptr) return {};
+
+  return course->getAssignmentGrades(assignment);
+}
+
 float Gradebook::getAssignmentMeanGrade(int courseCRN, string assignment) {
   Course* course = this->getCourse(courseCRN);
 

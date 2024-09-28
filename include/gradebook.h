@@ -34,6 +34,9 @@ class Gradebook {
 
   int getCourseAverageGrade(int courseCRN);
 
+  std::unordered_map<int, int> getAssignmentGrades(int courseCRN,
+                                                   std::string assignment);
+
   float getAssignmentMeanGrade(int courseCRN, std::string assignment);
 
   float getGPA(int studentUID);
