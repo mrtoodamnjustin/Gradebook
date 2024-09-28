@@ -71,3 +71,14 @@ void Course::removeStudent(int studentUID) {
 
   this->students.erase(it);
 }
+
+// PRIVATE
+
+bool Course::studentExists(int studentUID) {
+  bool exists = false;
+  for (int i = 0; i < this->students.size(); i++) {
+    if (students[i] == studentUID) exists = true;
+  }
+
+  return exists;
+}

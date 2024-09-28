@@ -25,11 +25,14 @@ class Course {
   void createAssignment(std::string assignment);
   void deleteAssignment(std::string assignment);
 
+  void gradeAssignment(std::string assignment, int studentUID);
+
   // Students
   void addStudent(int studentUID);
   void removeStudent(int studentUID);
 
  private:
+  bool studentExists(int studentUID);
   int CRN;
   std::string name;
   std::vector<int> students;
