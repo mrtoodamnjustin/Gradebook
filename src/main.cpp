@@ -58,7 +58,9 @@ int main() {
                     << gradebook.getGrade(currentID, studentGrades[i].first)
                     << "\n\n";
         }
-        std::cout << "\nStudent GPA: " << gradebook.getGPA(currentID) << "\n";
+        float GPA = gradebook.getGPA(currentID);
+        std::cout << "\nStudent GPA: "
+                  << ((GPA != -1) ? std::to_string(GPA) : "nil") << "\n";
 
         std::cout << "[1]   Add Class\n";
         std::cout << "[2]   Drop Class\n";
