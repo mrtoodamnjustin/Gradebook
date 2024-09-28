@@ -29,9 +29,10 @@ unordered_map<string, unordered_map<int, int>> Course::getAssignments() {
 unordered_map<int, int> Course::getAssignmentGrades(string assignment) {
   auto assignmentIterator = this->assignments.find(assignment);
 
-  if (assignmentIterator != this->assignments.end()) {
-    return assignmentIterator->second;
-  }
+  // Return an empty map if the assignment doesn't exist
+  if (assignmentIterator == this->assignments.end()) return {};
+
+  return assignmentIterator->second;
 }
 
 vector<int> Course::getStudents() { return this->students; }
