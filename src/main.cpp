@@ -53,7 +53,8 @@ int main() {
         auto studentGrades = gradebook.getStudentGrades(currentID);
         std::cout << "Classes\t\t\tGrades\n\n";
         for (size_t i = 0; i < studentGrades.size(); i++) {
-          std::cout << gradebook.getCourseName(studentGrades[i].first) << "\t\t"
+          std::cout << gradebook.getCourseName(studentGrades[i].first) << " ("
+                    << studentGrades[i].first << ")\t\t"
                     << gradebook.getGrade(currentID, studentGrades[i].first)
                     << "\n\n";
         }
