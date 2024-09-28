@@ -1,5 +1,6 @@
 #include "utility.h"
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -15,11 +16,22 @@ void flushCin() {
   std::cin.ignore(256, '\n');
 }
 
-void printEntities(vector<pair<string, int>>& entitites, string header1,
+void printEntities(vector<pair<string, int>>& entities, string header1,
                    string header2) {
-  std::cout << header1 << "\t\t" << header2 << "\n\n";
-  for (size_t i = 0; i < entitites.size(); i++) {
-    std::cout << entitites[i].first << "\t\t\t" << entitites[i].second << "\n";
+  int greatestLen = header1.length();
+
+  for (size_t i = 0; i < entities.size(); i++) {
+    int len = entities[i].first.size();
+    if (len > greatestLen) {
+      greatestLen = len;
+    }
+  }
+
+  int width = std::max(20, greatestLen + 6);
+  std::cout << std::left << std::setw(width) << header1 << header2 << "\n\n";
+  for (size_t i = 0; i < entities.size(); i++) {
+    std::cout << std::left << std::setw(width) << entities[i].first
+              << entities[i].second << "\n";
   }
 }
 
