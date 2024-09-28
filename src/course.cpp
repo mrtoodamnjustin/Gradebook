@@ -83,7 +83,7 @@ void Course::removeStudent(int studentUID) {
 
 bool Course::studentExists(int studentUID) {
   bool exists = false;
-  for (int i = 0; i < this->students.size(); i++) {
+  for (size_t i = 0; i < this->students.size(); i++) {
     if (students[i] == studentUID) exists = true;
   }
 
