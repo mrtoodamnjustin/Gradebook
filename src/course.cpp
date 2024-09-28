@@ -25,6 +25,15 @@ unordered_map<string, unordered_map<int, int>> Course::getAssignments() {
   return this->assignments;
 }
 
+// Returns map of key UID and value grade
+unordered_map<int, int> Course::getAssignmentGrades(string assignment) {
+  auto assignmentIterator = this->assignments.find(assignment);
+
+  if (assignmentIterator != this->assignments.end()) {
+    return assignmentIterator->second;
+  }
+}
+
 vector<int> Course::getStudents() { return this->students; }
 
 void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }

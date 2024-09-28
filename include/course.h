@@ -14,6 +14,7 @@ class Course {
   std::string getName();
   std::unordered_map<std::string, std::unordered_map<int, int>>
   getAssignments();
+  std::unordered_map<int, int> getAssignmentGrades(std::string assignment);
   std::vector<int> getStudents();
   int getCourseAverage();
 
