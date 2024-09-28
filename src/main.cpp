@@ -244,13 +244,15 @@ int main() {
 
           // View Students
           case '2': {
-            auto students = gradebook.getStudents(currentID);
+            std::vector<std::pair<std::string, int>> students =
+                gradebook.getStudents(currentID);
 
-            // Set first int to grade instead of UID
-            for (auto student : students) {
-              student.first = gradebook.getGrade(student.second, currentID);
+            // Change uid to the student's grade
+            for (std::pair<std::string, int> student : students) {
+              student.second = gradebook.getGrade(student.second, currentID);
             }
 
+            // Print pair <student, grade>
             utils::printEntities(students, "Student Name", "Grade");
             break;
           }
