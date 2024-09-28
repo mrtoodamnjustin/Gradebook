@@ -219,7 +219,7 @@ int main() {
 
           // Return
           case '4':
-            currentMenu = MainMenu;
+            currentMenu = AllStudentsMenu;
             break;
 
           default:
@@ -257,7 +257,7 @@ int main() {
 
           // Return
           case '3':
-            currentMenu = MainMenu;
+            currentMenu = AllClassesMenu;
             break;
 
           default:
