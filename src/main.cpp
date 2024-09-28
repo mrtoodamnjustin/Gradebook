@@ -21,8 +21,8 @@ enum Menu {
 int main() {
   Gradebook gradebook;
   Menu currentMenu = MainMenu;
-  int currentID;
   string currentAssignment;
+  int currentID;
 
   std::cout
       << "==================================================================\n";
