@@ -4,14 +4,18 @@
 #include <string>
 #include <vector>
 
+using std::pair;
+using std::string;
+using std::vector;
+
 namespace utils {
 void flushCin() {
   std::cin.clear();
   std::cin.ignore(256, '\n');
 }
 
-void printEntities(std::vector<std::pair<std::string, int>>& entitites,
-                   std::string header1, std::string header2) {
+void printEntities(vector<pair<string, int>>& entitites, string header1,
+                   string header2) {
   std::cout << header1 << "\t\t" << header2 << "\n\n";
   for (size_t i = 0; i < entitites.size(); i++) {
     std::cout << entitites[i].first << "\t\t\t" << entitites[i].second << "\n";
@@ -37,7 +41,7 @@ void printBadInput() {
   std::cout << "\n";
 }
 
-int getNumberInput(std::string inputMessage) {
+int getNumberInput(string inputMessage) {
   int input;
   std::cout << inputMessage;
   std::cin >> input;

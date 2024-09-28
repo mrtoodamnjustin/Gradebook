@@ -2,16 +2,19 @@
 
 #include <algorithm>
 
-Student::Student(int studentUID, std::string studentName) {
+using std::string;
+using std::vector;
+
+Student::Student(int studentUID, string studentName) {
   this->UID = studentUID;
   this->name = studentName;
 }
 
 int Student::getUID() { return this->UID; }
 
-std::string Student::getName() { return this->name; }
+string Student::getName() { return this->name; }
 
-std::vector<int> Student::getCourses() { return this->courses; }
+vector<int> Student::getCourses() { return this->courses; }
 
 bool Student::isInCourse(int courseCRN) {
   bool exists = false;
@@ -26,7 +29,7 @@ bool Student::isInCourse(int courseCRN) {
 
 void Student::setUID(int studentUID) { this->UID = studentUID; }
 
-void Student::setName(std::string studentName) { this->name = studentName; }
+void Student::setName(string studentName) { this->name = studentName; }
 
 void Student::addCourse(int courseCRN) {
   if (std::find(this->courses.begin(), this->courses.end(), courseCRN) ==

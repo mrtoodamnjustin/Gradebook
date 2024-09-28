@@ -7,42 +7,44 @@ enum gradeFlags {
   Missing = -2,
 };
 
+using std::string;
+using std::unordered_map;
+using std::vector;
+
 // Constructor
-Course::Course(int courseCRN, std::string courseName) {
+Course::Course(int courseCRN, string courseName) {
   this->CRN = courseCRN;
   this->name = courseName;
 }
 
 int Course::getCRN() { return this->CRN; }
 
-std::string Course::getName() { return this->name; }
+string Course::getName() { return this->name; }
 
-std::unordered_map<std::string, std::unordered_map<int, int>>
-Course::getAssignments() {
+unordered_map<string, unordered_map<int, int>> Course::getAssignments() {
   return this->assignments;
 }
 
-std::vector<int> Course::getStudents() { return this->students; }
+vector<int> Course::getStudents() { return this->students; }
 
 void Course::setCRN(int courseCRN) { this->CRN = courseCRN; }
 
-void Course::setName(std::string courseName) { this->name = courseName; }
+void Course::setName(string courseName) { this->name = courseName; }
 
 // Assignments
-void Course::createAssignment(std::string assignment) {
-  std::unordered_map<int, int> grades;
+void Course::createAssignment(string assignment) {
+  unordered_map<int, int> grades;
   for (size_t i = 0; i < this->students.size(); i++) {
     grades[students[i]] = Ungraded;
   }
   this->assignments[assignment] = grades;
 }
 
-void Course::deleteAssignment(std::string assignment) {
+void Course::deleteAssignment(string assignment) {
   this->assignments.erase(assignment);
 }
 
-void Course::gradeAssignment(int studentUID, std::string assignment,
-                             int grade) {
+void Course::gradeAssignment(int studentUID, string assignment, int grade) {
   if (!this->studentExists(studentUID)) return;
 
   this->assignments[assignment][studentUID] = grade;

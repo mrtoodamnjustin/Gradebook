@@ -3,6 +3,10 @@
 #include "gradebook.h"
 #include "utility.h"
 
+using std::pair;
+using std::string;
+using std::vector;
+
 enum Menu { MainMenu, AllStudentsMenu, AllClassesMenu, StudentMenu, ClassMenu };
 
 int main() {
@@ -91,7 +95,7 @@ int main() {
     }
     std::cout << "-----------------------------------------------\n";
 
-    std::string input;
+    string input;
     std::cin >> input;
     utils::flushCin();
     std::cout << "\n";
@@ -131,7 +135,7 @@ int main() {
         switch (input.at(0)) {
           // Add New Student
           case '1': {
-            std::string name;
+            string name;
             std::cout << "Enter the student's name: ";
             std::getline(std::cin, name);
             int studentUID = utils::getNumberInput("Enter the student's UID: ");
@@ -165,7 +169,7 @@ int main() {
         switch (input.at(0)) {
           // Add New Class
           case '1': {
-            std::string name;
+            string name;
             std::cout << "Enter the course's name: ";
             std::getline(std::cin, name);
             int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
@@ -211,7 +215,7 @@ int main() {
           // View Class' Assignments
           case '3': {
             int courseCRN = utils::getNumberInput("Enter the class's CRN: ");
-            std::vector<std::pair<std::string, int>> grades =
+            vector<pair<string, int>> grades =
                 gradebook.getStudentsGradesInCourse(currentID, courseCRN);
             utils::printEntities(grades, "Assignment", "Grade");
             break;
@@ -232,11 +236,11 @@ int main() {
         switch (input.at(0)) {
           // View Assignments
           case '1': {
-            std::vector<std::string> assignments =
+            vector<string> assignments =
                 gradebook.getCourseAssignments(currentID);
 
             std::cout << "Assignments: \n";
-            for (std::string assignment : assignments) {
+            for (string assignment : assignments) {
               std::cout << assignment << "\n";
             }
             break;
@@ -244,11 +248,11 @@ int main() {
 
           // View Students
           case '2': {
-            std::vector<std::pair<std::string, int>> students =
+            vector<pair<string, int>> students =
                 gradebook.getStudents(currentID);
 
             // Change uid to the student's grade
-            for (std::pair<std::string, int> student : students) {
+            for (pair<string, int> student : students) {
               student.second = gradebook.getGrade(student.second, currentID);
             }
 
