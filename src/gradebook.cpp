@@ -4,13 +4,7 @@
 
 #include "utility.h"
 
-Gradebook::Gradebook() {
-  this->createStudent(377607, "Justin");
-  this->createStudent(377601, "Casey");
-  this->createCourse(1000, "Literature 101");
-
-  this->addStudentToCourse(377607, 1000);
-}
+Gradebook::Gradebook() {}
 
 std::vector<std::pair<std::string, int>> Gradebook::getCourses() {
   std::vector<std::pair<std::string, int>> coursesInfo;
