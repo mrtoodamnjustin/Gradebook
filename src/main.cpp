@@ -5,14 +5,24 @@
 
 using std::pair;
 using std::string;
+using std::unordered_map;
 using std::vector;
 
-enum Menu { MainMenu, AllStudentsMenu, AllClassesMenu, StudentMenu, ClassMenu };
+enum Menu {
+  MainMenu,
+  AllStudentsMenu,
+  AllClassesMenu,
+  StudentMenu,
+  ClassMenu,
+  AssignmentsMenu,
+  AssignmentMenu
+};
 
 int main() {
   Gradebook gradebook;
   Menu currentMenu = MainMenu;
   int currentID;
+  string currentAssignment;
 
   std::cout
       << "==================================================================\n";
@@ -87,6 +97,44 @@ int main() {
         std::cout << "[1]   View Assignments\n";
         std::cout << "[2]   View Students\n";
         std::cout << "[3]   Return\n";
+        break;
+      }
+
+      case AssignmentsMenu: {
+        auto assignments = gradebook.getCourseAssignments(currentID);
+
+        // Print assignments
+        for (size_t i = 0; i < assignments.size(); i++) {
+          float meanGrade =
+              gradebook.getAssignmentMeanGrade(currentID, assignments[i]);
+
+          std::cout << assignments[i] << "\t\t"
+                    << ((meanGrade != -1) ? std::to_string(meanGrade) : "nil")
+                    << "\n";
+        }
+
+        std::cout << "[1]   View Assignment\n";
+        std::cout << "[2]   Create Assignment\n";
+        std::cout << "[3]   Delete Assignment\n";
+        std::cout << "[4]   Return\n";
+        break;
+      }
+
+      case AssignmentMenu: {
+        std::cout << currentAssignment << "\n\n";
+        std::cout << "Grades: \n";
+
+        unordered_map<int, int> gradesMap =
+            gradebook.getAssignmentGrades(currentID, currentAssignment);
+
+        // Print name and grades
+        for (auto it = gradesMap.begin(); it != gradesMap.end(); it++) {
+          std::cout << gradebook.getStudentName(it->first) << "\t\t"
+                    << it->second;
+        }
+
+        std::cout << "[1]   Grade Student\n";
+        std::cout << "[2]   Return\n";
         break;
       }
 
@@ -235,16 +283,9 @@ int main() {
       case ClassMenu:
         switch (input.at(0)) {
           // View Assignments
-          case '1': {
-            vector<string> assignments =
-                gradebook.getCourseAssignments(currentID);
-
-            std::cout << "Assignments: \n";
-            for (string assignment : assignments) {
-              std::cout << assignment << "\n";
-            }
+          case '1':
+            currentMenu = AssignmentsMenu;
             break;
-          }
 
           // View Students
           case '2': {
@@ -264,6 +305,69 @@ int main() {
           // Return
           case '3':
             currentMenu = AllClassesMenu;
+            break;
+
+          default:
+            utils::printBadInput();
+            break;
+        }
+        break;
+
+      case AssignmentsMenu:
+        switch (input.at(0)) {
+          // View Assignment
+          case '1': {
+            string assignment;
+            std::cout << "Enter the assignment's name exactly as you see it:\n";
+            std::cin >> assignment;
+            currentAssignment = assignment;
+            currentMenu = AssignmentMenu;
+            break;
+          }
+
+          // Create Assignment
+          case '2': {
+            string assignment;
+            std::cout << "Enter the assignment's name exactly as you see it:\n";
+            std::cin >> assignment;
+            gradebook.createAssignment(assignment, currentID);
+            break;
+          }
+
+          // Delete Assignment
+          case '3': {
+            string assignment;
+            std::cout << "Enter the assignment's name exactly as you see it:\n";
+            std::cin >> assignment;
+            gradebook.deleteAssignment(assignment, currentID);
+            break;
+          }
+
+          // Return
+          case '4':
+            currentMenu = ClassMenu;
+            break;
+
+          default:
+            utils::printBadInput();
+            break;
+        }
+        break;
+
+      case AssignmentMenu:
+        switch (input.at(0)) {
+          // Grade Student
+          case '1': {
+            int studentUID = utils::getNumberInput("Enter the student's UID: ");
+            int grade = utils::getNumberInput("Enter the grade: ");
+            gradebook.gradeAssignment(studentUID, currentID, currentAssignment,
+                                      grade);
+            break;
+          }
+
+          // Return
+          case '2':
+            currentMenu = AssignmentsMenu;
             break;
 
           default:
