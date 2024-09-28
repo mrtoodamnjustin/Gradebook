@@ -7,6 +7,7 @@
 
 class Gradebook {
  public:
+  Gradebook();
   std::vector<std::pair<std::string, int>> getCourses();
   std::vector<std::pair<std::string, int>> getStudents();
 
@@ -34,6 +35,9 @@ class Gradebook {
   int getCourseAverageGrade(int courseCRN);
 
   float getGPA(int studentUID);
+
+  void gradeAssignment(int studentUID, int courseCRN, std::string assignment,
+                       int grade);
 
   void createCourse(int courseCRN, std::string courseName);
 

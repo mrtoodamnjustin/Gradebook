@@ -4,6 +4,14 @@
 
 #include "utility.h"
 
+Gradebook::Gradebook() {
+  this->createStudent(377607, "Justin");
+  this->createStudent(377601, "Casey");
+  this->createCourse(1000, "Literature 101");
+
+  this->addStudentToCourse(377607, 1000);
+}
+
 std::vector<std::pair<std::string, int>> Gradebook::getCourses() {
   std::vector<std::pair<std::string, int>> coursesInfo;
   for (size_t i = 0; i < this->courses.size(); i++) {
@@ -195,6 +203,18 @@ float Gradebook::getGPA(int studentUID) {
   }
 
   return sum / numOfCourses;
+}
+
+void Gradebook::gradeAssignment(int studentUID, int courseCRN,
+                                std::string assignment, int grade) {
+  Student* student = this->getStudent(studentUID);
+  Course* course = this->getCourse(courseCRN);
+
+  if (student == nullptr || course == nullptr) return;
+
+  if (!student->isInCourse(courseCRN)) return;
+
+  course->gradeAssignment(studentUID, assignment, grade);
 }
 
 void Gradebook::createCourse(int courseCRN, std::string courseName) {
