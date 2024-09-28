@@ -34,6 +34,8 @@ class Gradebook {
 
   int getCourseAverageGrade(int courseCRN);
 
+  float getAssignmentMeanGrade(int courseCRN, std::string assignment);
+
   float getGPA(int studentUID);
 
   void gradeAssignment(int studentUID, int courseCRN, std::string assignment,

@@ -6,6 +6,7 @@
 
 using std::pair;
 using std::string;
+using std::unordered_map;
 using std::vector;
 
 Gradebook::Gradebook() {}
@@ -183,6 +184,28 @@ int Gradebook::getCourseAverageGrade(int courseCRN) {
   }
 
   return sum / students.size();
+}
+
+float Gradebook::getAssignmentMeanGrade(int courseCRN, string assignment) {
+  Course* course = this->getCourse(courseCRN);
+
+  if (course == nullptr) return -1;
+
+  unordered_map<int, int> gradeMap = course->getAssignmentGrades(assignment);
+
+  float gradeSum = 0;
+  int totalStudents = gradeMap.size();
+
+  // Divide by zero check
+  if (totalStudents == 0) return -1;
+
+  // Sum each student's grades by iterating through the map
+  for (auto it = gradeMap.begin(); it != gradeMap.end(); it++) {
+    gradeSum += it->second;
+  }
+
+  // Return the mean
+  return gradeSum / totalStudents;
 }
 
 float Gradebook::getGPA(int studentUID) {
