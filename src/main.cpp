@@ -177,9 +177,6 @@ int main() {
         break;
 
       case AllStudentsMenu: {
-        auto students = gradebook.getStudents();
-        utils::printEntities(students, "Student Name", "UID");
-
         switch (input.at(0)) {
           // Add New Student
           case '1': {
@@ -211,9 +208,6 @@ int main() {
         break;
       }
       case AllClassesMenu: {
-        auto courses = gradebook.getCourses();
-        utils::printEntities(courses, "Course Title", "CRN");
-
         switch (input.at(0)) {
           // Add New Class
           case '1': {
