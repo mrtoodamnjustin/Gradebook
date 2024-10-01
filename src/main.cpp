@@ -23,15 +23,23 @@ int main() {
   Menu currentMenu = MainMenu;
   string currentAssignment;
   int currentID;
-
-  std::cout
-      << "==================================================================\n";
-  std::cout
-      << "  Welcome to my interactive gradebook! Please select an option:\n";
-  std::cout
-      << "==================================================================\n";
+  int printHeader = 1, printAbout, printBadInput;
 
   while (true) {
+    system("cls");
+    if (printHeader) {
+      printHeader = 0;
+      std::cout << "==========================================================="
+                   "=======\n";
+      std::cout << "  Welcome to my interactive gradebook! Please select an "
+                   "option:\n";
+      std::cout << "==========================================================="
+                   "=======\n";
+    }
+    if (printAbout) utils::printAbout();
+    if (printBadInput) utils::printBadInput();
+    printAbout = 0;
+    printBadInput = 0;
     std::cout << "\n";
     std::cout << "To perform an action, enter the corresponding number.\n";
     std::cout << "Type 'q' to exit the program.\n";
@@ -167,11 +175,11 @@ int main() {
 
           // See About
           case '3':
-            utils::printAbout();
+            printAbout = 1;
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -202,7 +210,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -232,7 +240,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -269,7 +277,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -302,7 +310,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -343,7 +351,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
@@ -365,7 +373,7 @@ int main() {
             break;
 
           default:
-            utils::printBadInput();
+            printBadInput = 1;
             break;
         }
         break;
